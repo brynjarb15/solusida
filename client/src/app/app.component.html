@@ -2,41 +2,16 @@
 	{{title}}
 </h1>
 
+<router-outlet></router-outlet>
 
-<ngb-alert type="info">
+
+<!--<ngb-alert type="info">
 	Nú er gaman
 </ngb-alert>
-
-
-
-<button class="btn-primary" (click)="addSeller()">Bæta við seljanda</button>
-
-<div *ngFor="let p of products">
-	<app-product-card 
-		[product]="p"
-		(productUpdated)="onProductEdited($event)">
-
-	</app-product-card>
-</div>
-
-<ul>
-	<li *ngFor="let s of sellers">
-		{{s.name}}
-	</li>
-</ul>
-<div *ngIf="seller">
-	<h2>
-		{{seller.name}}
-	</h2>
-	<img src='{{seller.imagePath}}' alt="image of the seller" />
-</div>
 
 <div class="container">
 	<div class="row">
 		<div class="col-sm-4 col-md-3 col-lg-2">
 		</div>
 	</div>
-</div>
-
-
-<template ngbModalContainer></template>
+</div>-->

@@ -6,23 +6,23 @@ import { DebugElement } from '@angular/core';
 import { ListSellersComponent } from './list-sellers.component';
 
 describe('ListSellersComponent', () => {
-  let component: ListSellersComponent;
-  let fixture: ComponentFixture<ListSellersComponent>;
+	let component: ListSellersComponent;
+	let fixture: ComponentFixture<ListSellersComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ListSellersComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [ListSellersComponent]
+		})
+			.compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ListSellersComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(ListSellersComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

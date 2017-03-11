@@ -5,7 +5,7 @@ export class Seller {
 	name: string;
 	id: number;
 	category: string;
-	imagePath: string;categoryimagePath
+	imagePath: string;
 }
 
 @Component({

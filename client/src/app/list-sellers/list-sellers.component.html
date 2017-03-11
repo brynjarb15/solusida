@@ -1,3 +1,13 @@
 <p>
-  list-sellers works!
+	list-sellers works!
 </p>
+
+<button class="btn-primary" (click)="addSeller()">Bæta við seljanda</button>
+
+<ul>
+	<li *ngFor="let s of sellers">
+		{{s.name}}
+	</li>
+</ul>
+
+<template ngbModalContainer></template>
