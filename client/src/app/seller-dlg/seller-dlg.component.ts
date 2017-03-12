@@ -15,7 +15,12 @@ export interface Seller {
 })
 export class SellerDlgComponent implements OnInit {
 
-	seller: Seller;
+	seller = {
+		name: '',
+		id: -1,
+		category: '',
+		imagePath: ''
+	}
 
 	constructor(public activeModal: NgbActiveModal) { }
 

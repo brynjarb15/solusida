@@ -2,6 +2,8 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {  ToastrConfig } from 'ngx-toastr';
 
 describe('AppComponent', () => {
 	beforeEach(() => {
@@ -9,6 +11,10 @@ describe('AppComponent', () => {
 			declarations: [
 				AppComponent
 			],
+			providers: [ {
+				provide: ToastrConfig
+			}],
+			schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 		});
 		TestBed.compileComponents();
 	});

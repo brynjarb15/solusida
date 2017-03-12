@@ -5,6 +5,10 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { Observable} from 'rxjs/Observable';
 import { SellersService, Seller } from '../sellers.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { ToastrService} from 'ngx-toastr';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { ListSellersComponent } from './list-sellers.component';
 
@@ -19,11 +23,15 @@ class SellersServiceMock {
 	}
 }
 
-
 describe('ListSellersComponent', () => {
 	const mockService = new SellersServiceMock();
 	let component: ListSellersComponent;
 	let fixture: ComponentFixture<ListSellersComponent>;
+	let mockRouter = {
+		navigate: jasmine.createSpy("navigate")
+	};
+	var mockModal = {
+	}
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -31,7 +39,16 @@ describe('ListSellersComponent', () => {
 			providers: [{
 				provide: SellersService,
 				useValue: mockService
-			}]
+			}, {
+				provide: NgbModal,
+				useValue: mockModal
+			}, {
+				provide: Router,
+				useValue: mockRouter
+			}, {
+				provide: ToastrService
+			}],
+			schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 		})
 			.compileComponents();
 	}));

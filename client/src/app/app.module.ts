@@ -29,6 +29,7 @@ import { ProductDlgComponent } from './product-dlg/product-dlg.component';
 		HttpModule,
 		ToastrModule.forRoot(),
 		NgbModule.forRoot(),
+		RouterModule,
 		RouterModule.forRoot([{
 			path: '',
 			redirectTo: 'sellers',

@@ -13,17 +13,14 @@ import { ToastrService, ToastrConfig } from 'ngx-toastr';
 export class AppComponent implements OnInit {
 	title = 'app works!';
 
-	constructor(private service: SellersService,
-		private modalService: NgbModal,
-		private toastrService: ToastrService,
-		private toastrConfig: ToastrConfig) {
-		toastrConfig.preventDuplicates = true;
+	constructor(private toastrConfig: ToastrConfig) {
+		//toastrConfig.preventDuplicates = true;
 	}
 
 	ngOnInit() {
 	}
 
 	showSuccess() {
-		this.toastrService.error('Hello world!', 'Toastr fun!');
+		//this.toastrService.error('Hello world!', 'Toastr fun!');
 	}
 }
