@@ -24,7 +24,6 @@ export class SellersService {
 
 	constructor(private http: Http) { }
 
-
 	getSellerProduct(id: number): Observable<SellerProduct[]> {
 		return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
 		.map(response => {
@@ -52,6 +51,14 @@ export class SellersService {
 		});
 	}
 
+	editProduct(theProduct: SellerProduct, id: number): Observable<SellerProduct> {
+		const productId = theProduct.id;
+		return this.http.put(`http://localhost:5000/api/sellers/${id}/products/${productId}`, theProduct)
+		.map(response => {
+			return <SellerProduct> response.json();
+		});
+	}
+	
 	addNewSeller(seller: Seller): Observable<Seller> {
 		return this.http.post('http://localhost:5000/api/sellers/', seller)
 		.map(response => {

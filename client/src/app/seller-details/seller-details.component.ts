@@ -32,22 +32,23 @@ export class SellerDetailsComponent implements OnInit {
 	}
 
 	onProductEdited(p: SellerProduct) {
-		console.log(p);
+		this.service.editProduct(p, this.seller.id).subscribe(result => {
+		});
 	}
 
 	addProduct() {
 		const modalInstance = this.modalService.open(ProductDlgComponent)
 		modalInstance.componentInstance.product = {
 			name: '',
-			price: 0,
-  			quantityInStock: 0,
-			quantitySold: 0,
+			price: '',
+  			quantityInStock: '',
+			quantitySold: '',
 			imagePath: ''
-		};
+		};		
 		modalInstance.result.then(obj => {
-			this.service.addProduct(obj, this.seller.id).subscribe(result => {
-				console.log(obj, " has been added");
-			});
+		this.service.addProduct(obj, this.seller.id).subscribe(result => {
+			console.log(obj, " has been added");
+		});
 			console.log("dialog was closed using ok");
 			console.log(obj);
 		}).catch(err => {
