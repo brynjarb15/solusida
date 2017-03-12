@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 
 import { ProductDlgComponent } from './product-dlg.component';
 
@@ -11,7 +12,8 @@ describe('ProductDlgComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductDlgComponent ]
+      declarations: [ ProductDlgComponent ],
+	  imports: [FormsModule],
     })
     .compileComponents();
   }));

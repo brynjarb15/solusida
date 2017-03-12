@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SellersService, Seller, SellerProduct } from './sellers.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
+import { ToastrService, ToastrConfig } from 'ngx-toastr';
 
 
 @Component({
@@ -13,8 +14,16 @@ export class AppComponent implements OnInit {
 	title = 'app works!';
 
 	constructor(private service: SellersService,
-				private modalService: NgbModal) { }
+		private modalService: NgbModal,
+		private toastrService: ToastrService,
+		private toastrConfig: ToastrConfig) {
+		toastrConfig.preventDuplicates = true;
+	}
 
 	ngOnInit() {
+	}
+
+	showSuccess() {
+		this.toastrService.error('Hello world!', 'Toastr fun!');
 	}
 }

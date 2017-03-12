@@ -1,13 +1,22 @@
-<p>
-	list-sellers works!
-</p>
+<h2>
+	Seljendur
+</h2>
 
 <button class="btn-primary" (click)="addSeller()">Bæta við seljanda</button>
 
-<ul>
-	<li *ngFor="let s of sellers">
-		{{s.name}}
-	</li>
-</ul>
+<table class="table table-hover table-striped">
+	<thead>
+		<tr>
+			<th>Nafn</th>
+			<th>Flokkur</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let s of sellers" (click)="goViewSeller(s)">
+			<td>{{s.name}}</td>
+			<td>{{s.category}}</td>
+		</tr>
+	</tbody>
+</table>
 
 <template ngbModalContainer></template>

@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { SellersService } from './sellers.service';
@@ -26,6 +27,7 @@ import { ProductDlgComponent } from './product-dlg/product-dlg.component';
 		BrowserModule,
 		FormsModule,
 		HttpModule,
+		ToastrModule.forRoot(),
 		NgbModule.forRoot(),
 		RouterModule.forRoot([{
 			path: '',
