@@ -44,6 +44,10 @@ export class SellersService {
 			return <Seller> response.json();
 		});
 	}
-
-
+	addProduct(theProduct: SellerProduct, id: number): Observable<SellerProduct> {
+		return  this.http.post(`http://localhost:5000/api/sellers/${id}/products`, theProduct)
+		.map(response => {
+			return <SellerProduct> response.json();
+		});
+	}
 }

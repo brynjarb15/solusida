@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SellersService, SellerProduct, Seller } from '../sellers.service'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
+
 @Component({
 	selector: 'app-seller-details',
 	templateUrl: './seller-details.component.html',
@@ -10,7 +13,8 @@ export class SellerDetailsComponent implements OnInit {
 	products: SellerProduct[];
 	private seller: Seller;
 
-	constructor(private service: SellersService) { }
+	constructor(private modalService: NgbModal,
+				private service: SellersService) { }
 
 	ngOnInit() {
 
@@ -29,6 +33,27 @@ export class SellerDetailsComponent implements OnInit {
 
 	onProductEdited(p: SellerProduct) {
 		console.log(p);
+	}
+
+	addProduct() {
+		const modalInstance = this.modalService.open(ProductDlgComponent)
+		modalInstance.componentInstance.product = {
+			name: '',
+			price: 0,
+  			quantityInStock: 0,
+			quantitySold: 0,
+			imagePath: ''
+		};
+		modalInstance.result.then(obj => {
+			this.service.addProduct(obj, this.seller.id).subscribe(result => {
+				console.log(obj, " has been added");
+			});
+			console.log("dialog was closed using ok");
+			console.log(obj);
+		}).catch(err => {
+			console.log("dialog was cancelled");
+			console.log(err);
+		});
 	}
 
 }

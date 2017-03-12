@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+export class Product {
+	id: number;
+	name: string;
+	price: number;
+  quantityInStock: number;
+	quantitySold: string;
+  imagePath: string;
+}
 
 @Component({
   selector: 'app-product-dlg',
@@ -7,9 +17,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDlgComponent implements OnInit {
 
-  constructor() { }
+  private product: Product;
+
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
+  }
+
+  onCancel() {
+    this.activeModal.dismiss();
+  }
+
+  onOk() {
+    this.activeModal.close(this.product);
   }
 
 }
