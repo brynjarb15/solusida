@@ -1,7 +1,7 @@
 <p>
 	seller-details works!
 </p>
-
+<button class="btn-primary" (click)="addProduct()">Bæta við varningi</button>
 <div *ngIf="seller">
 	<h2>
 		{{seller.name}}
@@ -16,3 +16,5 @@
 
 	</app-product-card>
 </div>
+
+<template ngbModalContainer></template>
