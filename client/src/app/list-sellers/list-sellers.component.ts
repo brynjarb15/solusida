@@ -17,24 +17,26 @@ export class ListSellersComponent implements OnInit {
 				private service: SellersService) { }
 
 	ngOnInit() {
-
 		this.service.getSellers().subscribe(result => {
 			this.sellers = result;
 		});
-
 	}
 
 	addSeller() {
 		const modalInstance = this.modalService.open(SellerDlgComponent)
 		modalInstance.componentInstance.seller = {
-			name: 'Brynjar',
-			category: 'cat',
-			imagePath: 'pathToImage',
-			id: 5
+			name: '',
+			category: '',
+			imagePath: '',
+			id: 0
 		};
 		modalInstance.result.then(obj => {
 			console.log("Dialog was closed using OL");
 			console.log(obj);
+			this.service.addNewSeller(obj).subscribe(result => {
+				console.log(result);
+				
+			});
 		}).catch(err => {
 			console.log("Dialog was cancelled");
 			console.log(err);

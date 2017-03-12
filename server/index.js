@@ -79,6 +79,7 @@ function findSellerById(id) {
 
 // Return all listed sellers:
 app.get("/api/sellers", (req, res) => {
+	console.log("About to Return all listed sellers:");
 	res.type("application/json");
 	res.json(sellers);
 });

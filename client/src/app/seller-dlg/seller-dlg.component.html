@@ -5,9 +5,12 @@
 	</button>
 </div>
 <div class="modal-body">
-	<input [(ngModel)]="seller.name" autofocus/>
-	<input [(ngModel)]="seller.category" />
-	<input [(ngModel)]="seller.imagePath" />
+	Nafn:
+	<input [(ngModel)]="seller.name" autofocus/><br>
+	Flokkur:
+	<input [(ngModel)]="seller.category" /> <br>
+	Slóð á Mynd:
+	<input [(ngModel)]="seller.imagePath" /><br>
 </div>
 <div class="modal-footer">
 	<button type="button" class="btn btn-secondary" (click)='onCancel()'>Canel</button>

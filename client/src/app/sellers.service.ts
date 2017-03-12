@@ -10,7 +10,7 @@ export interface Seller {
 	imagePath: string;
 }
 
-export interface SellerProduct {
+export class SellerProduct {
 	id: number;
 	name: string;
 	price: number;
@@ -45,5 +45,5 @@ export class SellersService {
 		});
 	}
 
-
+	
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
 
-export class Seller {
+export interface Seller {
 	name: string;
 	id: number;
 	category: string;
