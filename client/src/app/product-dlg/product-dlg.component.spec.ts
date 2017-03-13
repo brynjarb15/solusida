@@ -13,7 +13,8 @@ describe('ProductDlgComponent', () => {
 	let fixture: ComponentFixture<ProductDlgComponent>;
 
 	const mockModal = {
-
+		dismiss: jasmine.createSpy('dismiss'),
+		close: jasmine.createSpy('close')
 	};
 
 	beforeEach(async(() => {
@@ -31,22 +32,165 @@ describe('ProductDlgComponent', () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ProductDlgComponent);
-		const productDlg = fixture.debugElement.componentInstance; // þarf að breyta
-		productDlg.product = { // þarf að breyta
+		//const productDlg = fixture.debugElement.componentInstance; // þarf að breyta
+		/*productDlg.product = { // þarf að breyta
 			id: 0,
 			name: '',
 			price: 0,
 			quantityInStock: 0,
 			quantitySold: '',
 			imagePath: ''
-		}
+		}*/
 		component = fixture.componentInstance;
 		fixture.detectChanges();
-
-
 	});
 
 	it('should create', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should have products with empty strings as values', async(() => {
+		const productDlg = fixture.debugElement.componentInstance;
+		fixture.detectChanges();
+		expect(productDlg.product.id).toEqual(-1);
+		expect(productDlg.product.name).toEqual('');
+		expect(productDlg.product.price).toEqual(0);
+		expect(productDlg.product.quantityInStock).toEqual(0);
+		expect(productDlg.product.quantitySold).toEqual(0);
+		expect(productDlg.product.imagePath).toEqual('');
+	}));
+
+	it('should call dismiss on activeModal', async(() => {
+		component.onCancel();
+		fixture.detectChanges();
+		expect(mockModal.dismiss).toHaveBeenCalled();
+	}));
+
+	it('should call close on activeModal', async(() => {
+		// arrange
+		component.product = {
+			id: -1,
+			name: 'someName',
+			price: 1000,
+			quantityInStock: 500,
+			quantitySold: 500,
+			imagePath: 'someImagePath'
+		};
+		// act
+		component.onOk();
+		fixture.detectChanges();
+		// assert
+		expect(mockModal.close).toHaveBeenCalled();
+	}));
+
+	it('should not call close on activeModal', async(() => {
+		// arrange
+		component.product = {
+			id: -1,
+			name: 'someName',
+			price: 1000,
+			quantityInStock: 500,
+			quantitySold: 500,
+			imagePath: 'someImagePath'
+		};
+		mockModal.close = jasmine.createSpy('close');
+		// act
+		component.onOk();
+		fixture.detectChanges();
+		// assert
+		expect(mockModal.close).not.toHaveBeenCalled();
+	}));
+
+	describe('validateInput', () => {
+		it('should return false', async(() => {
+			// arrange
+			component.product = {
+				id: -1,
+				name: '',
+				price: 0,
+				quantityInStock: 0,
+				quantitySold: 0,
+				imagePath: ''
+			};
+
+			// act // assert
+			expect(component.validInputForProduct()).toBeFalsy();
+		}));
+
+		it('should return false because of no name', async(() => {
+			// arrange
+			// const sellerDlg = fixture.debugElement.componentInstance;
+			component.product = {
+				id: 0,
+				name: '',
+				price: 100,
+				quantityInStock: 10,
+				quantitySold: 10,
+				imagePath: 'someImagePath'
+			};
+
+			// act // assert
+			expect(component.validInputForProduct()).toBeFalsy();
+		}));	
+		it('should return false because of negative price', async(() => {
+			// arrange
+			// const sellerDlg = fixture.debugElement.componentInstance;
+			component.product = {
+				id: 0,
+				name: 'someName',
+				price: -100,
+				quantityInStock: 10,
+				quantitySold: 10,
+				imagePath: 'someImagePath'
+			};
+
+			// act // assert
+			expect(component.validInputForProduct()).toBeFalsy();
+		}));	
+		it('should return false because of negative quantityInStock', async(() => {
+			// arrange
+			// const sellerDlg = fixture.debugElement.componentInstance;
+			component.product = {
+				id: 0,
+				name: 'someName',
+				price: 100,
+				quantityInStock: -10,
+				quantitySold: 10,
+				imagePath: 'someImagePath'
+			};
+
+			// act // assert
+			expect(component.validInputForProduct()).toBeFalsy();
+		}));
+		it('should return false because of negative quantitySold', async(() => {
+			// arrange
+			// const sellerDlg = fixture.debugElement.componentInstance;
+			component.product = {
+				id: 0,
+				name: 'someName',
+				price: 100,
+				quantityInStock: 10,
+				quantitySold: -10,
+				imagePath: 'someImagePath'
+			};
+
+			// act // assert
+			expect(component.validInputForProduct()).toBeFalsy();
+		}));
+		it('should return true', async(() => {
+			// arrange
+			// const sellerDlg = fixture.debugElement.componentInstance;
+			component.product = {
+				id: 0,
+				name: 'someName',
+				price: 100,
+				quantityInStock: 10,
+				quantitySold: 10,
+				imagePath: 'someImagePath'
+			};
+
+			// act // assert
+			expect(component.validInputForProduct()).toBeTruthy();
+		}));
 	});
 });

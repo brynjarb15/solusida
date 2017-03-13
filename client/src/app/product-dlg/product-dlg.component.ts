@@ -17,7 +17,16 @@ export class Product {
 })
 export class ProductDlgComponent implements OnInit {
 
-  private product: Product;
+  //private product: Product;
+
+  product = {
+    id: -1,
+    name: '',
+    price: 0,
+    quantityInStock: 0,
+    quantitySold: 0,
+    imagePath: ''
+  }
 
   parentClass = 'has-danger';
 	childClass = 'form-control-danger';
