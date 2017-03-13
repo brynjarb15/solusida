@@ -16,13 +16,13 @@ export class SellerDetailsComponent implements OnInit {
 
 	products: SellerProduct[];
 	topTenProducts: SellerProduct[];
-	private seller: Seller;
+	seller: Seller;
 	sellerId: number;
 
 	constructor(private modalService: NgbModal,
 		private service: SellersService,
 		private toastrService: ToastrService,
-		private route: ActivatedRoute, ) { }
+		private route: ActivatedRoute) { }
 
 	ngOnInit() {
 		this.sellerId = this.route.snapshot.params['id'];
@@ -64,24 +64,17 @@ export class SellerDetailsComponent implements OnInit {
 
 	addProduct() {
 		const modalInstance = this.modalService.open(ProductDlgComponent)
-		modalInstance.componentInstance.product = {
-			name: '',
-			price: '',
-			quantityInStock: '',
-			quantitySold: '',
-			imagePath: ''
-		};
 		modalInstance.result.then(obj => {
 			console.log("dialog was closed using ok");
 			this.service.addProduct(obj, this.sellerId).subscribe(addResult => {
-				console.log(obj, " has been added");
+				console.log('addResult', addResult);
 				this.service.getSellerProduct(this.sellerId).subscribe(allProducts => {
 					this.products = allProducts;
 				});
-				this.toastrService.success('Vörunni ' + obj.name + ' var bætt við', 'Ný vara')
+				this.toastrService.success('Vörunni ' + obj.name + ' var bætt við', 'Ný vara');
 			});
 		}).catch(err => {
-			//TODO: skilaboð um að hætta
+			this.toastrService.warning('Hætt var við að bæta við vöru', 'Ný vara');
 			console.log("dialog was cancelled");
 			console.log(err);
 		});
@@ -89,6 +82,7 @@ export class SellerDetailsComponent implements OnInit {
 
 	editSeller() {
 		const modalInstance = this.modalService.open(SellerDlgComponent)
+		console.log('---', this.seller.name);
 		const backupSeller = {
 			name: this.seller.name,
 			id: this.seller.id,
@@ -103,7 +97,7 @@ export class SellerDetailsComponent implements OnInit {
 			});
 		}).catch(err => {
 			this.seller = backupSeller;
-			// TODO: display cancel message
+			this.toastrService.warning('Hætt var við að breyta seljanda', 'Breyta seljanda');
 			console.log("onEdit-productcardComp: ", err);
 		});
 	}
