@@ -16,7 +16,7 @@ export class SellerProduct {
 	price: number;
 	quantitySold: number;
 	quantityInStock: number;
-	imagePath: number;
+	imagePath: string;
 }
 
 @Injectable()

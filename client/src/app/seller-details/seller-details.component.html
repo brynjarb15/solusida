@@ -1,26 +1,34 @@
-<button class="btn-primary" (click)="addProduct()">Bæta við varningi</button>
 <div *ngIf="seller">
-	<h2>
-		{{seller.name}}<br>
-		{{seller.category}}<br>
-	</h2>
-	<img src='{{seller.imagePath}}' alt="image of the seller" style="width: 200px"/>
+	<img src='{{seller.imagePath}}' alt="image of the seller" class="sellerImage" />
+	<h3>Nafn: {{seller.name}} </h3> <br>
+	<h3>Flokkur: {{seller.category}} </h3><br>
 </div>
 
+<button class="btn-primary" (click)="addProduct()">Bæta við varningi</button>
+
 <ngb-tabset>
-	<ngb-tab title="All Products">
+	<ngb-tab title="Allar vörur">
 		<template ngbTabContent>
-			<div *ngFor="let p of products">
-				<app-product-card 
-				[product]="p" 
-				(productUpdated)="onProductEdited($event)">
-				</app-product-card>
+			<div class="row">
+				<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of products">
+					<div class="card">
+						<app-product-card [product]="p" (productUpdated)="onProductEdited($event)">
+						</app-product-card>
+					</div>
+				</div>
 			</div>
 		</template>
 	</ngb-tab>
-	<ngb-tab title="Top 10">
+	<ngb-tab title="10 mest seldu vörurnar">
 		<template ngbTabContent>
-			<p>Hér koma topp 10 hlutirnir</p>
+			<div class="row">
+				<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of topTenProducts">
+					<div class="card">
+						<app-product-card [product]="p" (productUpdated)="onProductEdited($event)">
+						</app-product-card>
+					</div>
+				</div>
+			</div>
 		</template>
 	</ngb-tab>
 </ngb-tabset>

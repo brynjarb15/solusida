@@ -1,6 +1,10 @@
-<div *ngIf="product">
-	<h3>{{product.name}}</h3>
-	<img [src]="product.imagePath" style="width: 80px" />
-	<i>{{product.price}}</i>
-	<button class="btn-primary" (click)="onEdit()">Breyta vöru</button>
+<div class='card-block' *ngIf='product'>
+	<h4 class='card-title'>{{product.name}}</h4>
+	<img *ngIf='product.imagePath' [src]='product.imagePath' class="image" />
+	<p *ngIf='!product.imagePath' class="image">Mynd Vantar</p>
+	<p>
+		Verð:
+		<i>{{product.price}}</i>
+	</p>
+	<button class='btn-primary' (click)='onEdit()'>Breyta vöru</button>
 </div>

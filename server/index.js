@@ -52,7 +52,7 @@ var products = [
 	createProduct(1,  7, "Jakki",            4499,  23, 14, "http://www.newmanmayahandicraft.com.np/wp-content/uploads/2015/10/woolen-jacket-with-multicolored-design.jpg"),
 	createProduct(1,  8, "Peysa",            5899, 122,  1, "https://upload.wikimedia.org/wikipedia/commons/7/75/Selburose-sweater.jpg"),
 	createProduct(1,  9, "Lambhúshetta",     2499, 322,  4, "https://upload.wikimedia.org/wikipedia/commons/9/9a/Balaclava_3_hole_black.jpg"),
-	createProduct(1, 10, "Buxur",            4299,  73,  5, ""),
+	createProduct(1, 10, "Buxur",            4299,  73,  5, "http://4.bp.blogspot.com/_3uSmZn778zk/TLoYjEtza0I/AAAAAAAAAGE/k0rWNg2l2zs/s1600/Picture+202.jpg"),
 	createProduct(1, 11, "Grifflur",         1299,  98,  9, ""),
 	createProduct(1, 12, "Teppi",             499, 819, 98, "https://pixabay.com/static/uploads/photo/2015/11/07/14/40/fabric-1031932_960_720.jpg"),
 	createProduct(1, 13, "Sokkar",            499, 991, 23, "https://upload.wikimedia.org/wikipedia/commons/4/42/HandKnittedWhiteLaceSock.jpg"),
