@@ -13,7 +13,7 @@ import { ToastrService} from 'ngx-toastr';
 })
 export class ListSellersComponent implements OnInit {
 
-	private sellers: Seller[];
+	private sellers = [];
 
 	constructor(private modalService: NgbModal,
 				private service: SellersService,
@@ -28,12 +28,7 @@ export class ListSellersComponent implements OnInit {
 
 	addSeller() {
 		const modalInstance = this.modalService.open(SellerDlgComponent);
-		modalInstance.componentInstance.seller = {
-			name: '',
-			category: '',
-			imagePath: '',
-			id: 0
-		};
+		/*modalInstance.componentInstance.seller = {name: '', category: '', imagePath: '', id: 0 };*/
 		modalInstance.result.then(obj => {
 			console.log('Dialog was closed using Ok');
 			this.service.addNewSeller(obj).subscribe(newSeller => {

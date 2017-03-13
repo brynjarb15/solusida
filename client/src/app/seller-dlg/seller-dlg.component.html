@@ -1,18 +1,33 @@
-<div class="modal-header">
-	<h4 class="modal-title">Hi there!</h4>
-	<button type="button" class="close" aria-label="Close" (click)='onCancel()'>
-		<span aria-hidden="true">&times;</span>
+<div class='modal-header'>
+	<h4 class='modal-title'>Bæta við seljanda</h4>
+	<button type='button' class='close' aria-label='Close' (click)='onCancel()'>
+		<span aria-hidden='true'>&times;</span>
 	</button>
 </div>
-<div class="modal-body">
-	Nafn:
-	<input [(ngModel)]="seller.name" autofocus/><br>
-	Flokkur:
-	<input [(ngModel)]="seller.category" /> <br>
-	Slóð á Mynd:
-	<input [(ngModel)]="seller.imagePath" /><br>
+<div class='modal-body'>
+	<div [ngClass]='isNameParentClass'>
+		Nafn:
+		<input [ngClass]='isNameClass' class='form-control' [(ngModel)]='seller.name' autofocus/>
+		<div class='form-control-feedback' *ngIf='notName'>
+			Það þarf að slá inn nafn
+		</div>
+	</div>
+	<div [ngClass]='isCategoryParentClass'>
+		Flokkur:
+		<input [ngClass]='isCategoryClass' class='form-control' [(ngModel)]='seller.category' />
+		<div class='form-control-feedback' *ngIf='notCategory'>
+			Það þarf að slá inn nafn
+		</div>
+	</div>
+	<div [ngClass]='isImagePathParentClass'>
+		Slóð á Mynd:
+		<input [ngClass]='isImagePathClass' class='form-control' [(ngModel)]='seller.imagePath' />
+		<div class='form-control-feedback' *ngIf='notImagePath'>
+			Það þarf að slá inn nafn
+		</div>
+	</div>
 </div>
-<div class="modal-footer">
-	<button type="button" class="btn btn-secondary" (click)='onCancel()'>Canel</button>
-	<button type="button" class="btn btn-sucess" (click)='onOk()'>OK</button>
+<div class='modal-footer'>
+	<button type='button' class='btn btn-secondary' (click)='onCancel()'>Hætta við</button>
+	<button type='button' class='btn btn-sucess' (click)='onOk()'>Staðfesta</button>
 </div>

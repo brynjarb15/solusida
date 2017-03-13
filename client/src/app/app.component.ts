@@ -14,13 +14,13 @@ export class AppComponent implements OnInit {
 	title = 'app works!';
 
 	constructor(private toastrConfig: ToastrConfig) {
-		//toastrConfig.preventDuplicates = true;
+		// toastrConfig.preventDuplicates = true;
 	}
 
 	ngOnInit() {
 	}
 
 	showSuccess() {
-		//this.toastrService.error('Hello world!', 'Toastr fun!');
+		// this.toastrService.error('Hello world!', 'Toastr fun!');
 	}
 }
