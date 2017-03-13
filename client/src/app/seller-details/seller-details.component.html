@@ -1,35 +1,33 @@
-<div *ngIf="seller">
-	<img src='{{seller.imagePath}}' alt="image of the seller" class="sellerImage" />
+<div *ngIf='seller'>
+	<img src='{{seller.imagePath}}' alt='image of the seller' class='sellerImage' />
 	<h3>Nafn: {{seller.name}} </h3> <br>
 	<h3>Flokkur: {{seller.category}} </h3><br>
 </div>
 
-<button class="btn-primary" (click)="editSeller()">Breyta seljanda</button>
-<button class="btn-primary" (click)="addProduct()">Bæta við varningi</button>
-
+<button class='btn-primary' (click)='editSeller()'>Breyta seljanda</button>
+<button class='btn-primary' (click)='addProduct()'>Bæta við varningi</button>
+<div *ngIf='noProducts'>Engar vörur eru til staðar fyrir þennan seljanda</div>
 <ngb-tabset>
-	<ngb-tab title="Allar vörur">
+	<ngb-tab title='Allar vörur'>
 		<template ngbTabContent>
-			<div class="row">
-				<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of products">
-					<div class="card">
-						<app-product-card 
-							[product]="p" 
-							(productUpdated)="onProductEdited($event)">
+			<h3 *ngIf='noProducts'>Engar vörur eru til staðar fyrir þennan seljanda</h3>
+			<div class='row'>
+				<div class='col-sm-6 col-md-4 col-lg-3' *ngFor='let p of products'>
+					<div class='card'>
+						<app-product-card [product]='p' (productUpdated)='onProductEdited($event)'>
 						</app-product-card>
 					</div>
 				</div>
 			</div>
 		</template>
 	</ngb-tab>
-	<ngb-tab title="10 mest seldu vörurnar">
+	<ngb-tab title='10 mest seldu vörurnar'>
 		<template ngbTabContent>
-			<div class="row">
-				<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of topTenProducts">
-					<div class="card">
-						<app-product-card 
-							[product]="p" 
-							(productUpdated)="onProductEdited($event)">
+			<h3 *ngIf='noProducts'>Engar vörur eru til staðar fyrir þennan seljanda</h3>
+			<div class='row'>
+				<div class='col-sm-6 col-md-4 col-lg-3' *ngFor='let p of topTenProducts'>
+					<div class='card'>
+						<app-product-card [product]='p' (productUpdated)='onProductEdited($event)'>
 						</app-product-card>
 					</div>
 				</div>

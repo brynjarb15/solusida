@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/rx';
 
 export interface Seller {
@@ -26,53 +26,53 @@ export class SellersService {
 
 	getSellerProduct(id: number): Observable<SellerProduct[]> {
 		return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
-		.map(response => {
-			return <SellerProduct[]> response.json();
-		});
+			.map(response => {
+				return <SellerProduct[]>response.json();
+			});
 	}
 
 	getSellers(): Observable<Seller[]> {
 		return this.http.get('http://localhost:5000/api/sellers')
-		.map(response => {
-			return <Seller[]> response.json();
-		});
+			.map(response => {
+				return <Seller[]>response.json();
+			});
 	}
 	getSellerById(sellerId: number): Observable<Seller> {
 		return this.http.get(`http://localhost:5000/api/sellers/${sellerId}`)
-		.map(response => {
-			return <Seller> response.json();
-		});
+			.map(response => {
+				return <Seller>response.json();
+			});
 	}
 
 	addProduct(theProduct: SellerProduct, sellerId: number): Observable<SellerProduct> {
-		return  this.http.post(`http://localhost:5000/api/sellers/${sellerId}/products`, theProduct)
-		.map(response => {
-			return <SellerProduct> response.json();
-		});
+		return this.http.post(`http://localhost:5000/api/sellers/${sellerId}/products`, theProduct)
+			.map(response => {
+				return <SellerProduct>response.json();
+			});
 	}
 
 	editProduct(theProduct: SellerProduct, sellerId: number): Observable<SellerProduct> {
 		const productId = theProduct.id;
 		return this.http.put(`http://localhost:5000/api/sellers/${sellerId}/products/${productId}`, theProduct)
-		.map(response => {
-			return <SellerProduct> response.json();
-		});
+			.map(response => {
+				return <SellerProduct>response.json();
+			});
 	}
 
 	editSeller(seller: Seller): Observable<Seller> {
 		const sellerId = seller.id;
 		console.log(`http://localhost:5000/api/sellers/${sellerId}`);
 		return this.http.put(`http://localhost:5000/api/sellers/${sellerId}`, seller)
-		.map(response => {
-			return <Seller> response.json();
-		})
+			.map(response => {
+				return <Seller>response.json();
+			})
 	}
 
 	addNewSeller(seller: Seller): Observable<Seller> {
 		return this.http.post('http://localhost:5000/api/sellers/', seller)
-		.map(response => {
-			return <Seller> response.json();
-		});
+			.map(response => {
+				return <Seller>response.json();
+			});
 	}
 
 }

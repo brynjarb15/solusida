@@ -28,10 +28,10 @@ describe('ListSellersComponent', () => {
 	const mockService = new SellersServiceMock();
 	let component: ListSellersComponent;
 	let fixture: ComponentFixture<ListSellersComponent>;
-	let mockRouter = {
+	const mockRouter = {
 		navigate: jasmine.createSpy('navigate')
 	};
-	var mockModal = {
+	const mockModal = {
 	};
 
 	beforeEach(async(() => {
@@ -57,7 +57,7 @@ describe('ListSellersComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ListSellersComponent);
 		component = fixture.componentInstance;
-		//f ixture.detectChanges();
+		// fixture.detectChanges();
 	});
 
 	it('should create', () => {

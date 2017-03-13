@@ -5,103 +5,98 @@ export class Product {
 	id: number;
 	name: string;
 	price: number;
-  quantityInStock: number;
+	quantityInStock: number;
 	quantitySold: number;
-  imagePath: string;
+	imagePath: string;
 }
 
 @Component({
-  selector: 'app-product-dlg',
-  templateUrl: './product-dlg.component.html',
-  styleUrls: ['./product-dlg.component.css']
+	selector: 'app-product-dlg',
+	templateUrl: './product-dlg.component.html',
+	styleUrls: ['./product-dlg.component.css']
 })
 export class ProductDlgComponent implements OnInit {
 
-  //private product: Product;
 
-  product = {
-    id: -1,
-    name: '',
-    price: 0,
-    quantityInStock: 0,
-    quantitySold: 0,
-    imagePath: ''
-  }
+	product = {
+		id: -1,
+		name: '',
+		price: 0,
+		quantityInStock: 0,
+		quantitySold: 0,
+		imagePath: ''
+	};
 
-  parentClass = 'has-danger';
+	parentClass = 'has-danger';
 	childClass = 'form-control-danger';
 
-  isNameClass = '';
+	isNameClass = '';
 	isNameParentClass = '';
 	isPriceClass = '';
 	isPriceParentClass = '';
 	isInStockClass = '';
 	isInStockParentClass = '';
-  isSoldClass = '';
-  isSoldParentClass = '';
+	isSoldClass = '';
+	isSoldParentClass = '';
 
-  noName = false;
-  negPrice = false;
-  negInStock = false;
-  negSold = false;
+	noName = false;
+	negPrice = false;
+	negInStock = false;
+	negSold = false;
 
-  constructor(public activeModal: NgbActiveModal) { }
+	constructor(public activeModal: NgbActiveModal) { }
 
-  ngOnInit() {
-  }
-  
-  onCancel() {
-    this.activeModal.dismiss();
-  }
+	ngOnInit() {
+	}
 
-  onOk() {
-    if(this.validInputForProduct()) {
-        this.activeModal.close(this.product);
-    }
-  }
+	onCancel() {
+		this.activeModal.dismiss();
+	}
 
-  validInputForProduct(): boolean {  
+	onOk() {
+		if (this.validInputForProduct()) {
+			this.activeModal.close(this.product);
+		}
+	}
 
-    if (this.product.name === '') {
-      this.noName = true;
-      this.isNameParentClass = this.parentClass;
+	validInputForProduct(): boolean {
+
+		if (this.product.name === '') {
+			this.noName = true;
+			this.isNameParentClass = this.parentClass;
 			this.isNameClass = this.childClass;
-    }
-    else {
-      this.noName = false;
-      this.isNameParentClass = '';
-			this.isNameClass = ''; 
-    }
-    if (this.product.price < 0 || !isFinite(this.product.price)) {
-      this.negPrice = true;
-      this.isPriceParentClass = this.parentClass;
-      this.isPriceClass = this.childClass;
-    }
-    else {
-      this.negPrice = false;
-      this.isPriceParentClass = '';
-      this.isPriceClass = '';
-    }
-    if(this.product.quantityInStock < 0 || !isFinite(this.product.quantityInStock)) {
-      this.negInStock = true;
-      this.isInStockParentClass = this.parentClass;
-      this.isInStockClass = this.childClass;
-    }
-    else {
-      this.negInStock = false;
-      this.isInStockParentClass = '';
-      this.isInStockClass = '';
-    }
-    if(this.product.quantitySold < 0 || !isFinite(this.product.quantitySold)) {
-      this.negSold = true;
-      this.isSoldParentClass = this.parentClass;
-      this.isSoldClass = this.childClass;
-    }
-    else {
-      this.negSold = false;
-      this.isSoldParentClass = '';
-      this.isSoldClass = '';
-    }
-    return !(this.noName || this.negPrice || this.negInStock || this.negSold);
-  }
+		} else {
+			this.noName = false;
+			this.isNameParentClass = '';
+			this.isNameClass = '';
+		}
+		if (this.product.price < 0 || !isFinite(this.product.price)) {
+			this.negPrice = true;
+			this.isPriceParentClass = this.parentClass;
+			this.isPriceClass = this.childClass;
+		} else {
+			this.negPrice = false;
+			this.isPriceParentClass = '';
+			this.isPriceClass = '';
+		}
+		if (this.product.quantityInStock < 0 || !isFinite(this.product.quantityInStock)) {
+			this.negInStock = true;
+			this.isInStockParentClass = this.parentClass;
+			this.isInStockClass = this.childClass;
+		} else {
+			this.negInStock = false;
+			this.isInStockParentClass = '';
+			this.isInStockClass = '';
+		}
+		if (this.product.quantitySold < 0 || !isFinite(this.product.quantitySold)) {
+			this.negSold = true;
+			this.isSoldParentClass = this.parentClass;
+			this.isSoldClass = this.childClass;
+		} else {
+			this.negSold = false;
+			this.isSoldParentClass = '';
+			this.isSoldClass = '';
+		}
+		return !(this.noName || this.negPrice || this.negInStock || this.negSold);
+	}
 }

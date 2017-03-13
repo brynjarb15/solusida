@@ -34,7 +34,7 @@ describe('ProductCardComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ProductCardComponent);
 		component = fixture.componentInstance;
-		//fixture.detectChanges();
+		// fixture.detectChanges();
 	});
 
 	it('should create', () => {
@@ -42,7 +42,7 @@ describe('ProductCardComponent', () => {
 		// act
 		fixture.detectChanges();
 		// assert
-		
+
 		expect(component).toBeTruthy();
 	});
 });

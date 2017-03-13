@@ -1,7 +1,7 @@
 <div class='card-block' *ngIf='product'>
 	<h4 class='card-title'>{{product.name}}</h4>
-	<img *ngIf='product.imagePath' [src]='product.imagePath' class="image" />
-	<p *ngIf='!product.imagePath' class="image">Mynd Vantar</p>
+	<img *ngIf='product.imagePath' [src]='product.imagePath' class='image' />
+	<p *ngIf='!product.imagePath' class='image'>Mynd Vantar</p>
 	<p>
 		Verð:
 		<i>{{product.price}}</i>
