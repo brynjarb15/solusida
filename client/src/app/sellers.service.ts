@@ -37,26 +37,35 @@ export class SellersService {
 			return <Seller[]> response.json();
 		});
 	}
-	getSellerById(id: number): Observable<Seller> {
-		return this.http.get(`http://localhost:5000/api/sellers/${id}`)
+	getSellerById(sellerId: number): Observable<Seller> {
+		return this.http.get(`http://localhost:5000/api/sellers/${sellerId}`)
 		.map(response => {
 			return <Seller> response.json();
 		});
 	}
 
-	addProduct(theProduct: SellerProduct, id: number): Observable<SellerProduct> {
-		return  this.http.post(`http://localhost:5000/api/sellers/${id}/products`, theProduct)
+	addProduct(theProduct: SellerProduct, sellerId: number): Observable<SellerProduct> {
+		return  this.http.post(`http://localhost:5000/api/sellers/${sellerId}/products`, theProduct)
 		.map(response => {
 			return <SellerProduct> response.json();
 		});
 	}
 
-	editProduct(theProduct: SellerProduct, id: number): Observable<SellerProduct> {
+	editProduct(theProduct: SellerProduct, sellerId: number): Observable<SellerProduct> {
 		const productId = theProduct.id;
-		return this.http.put(`http://localhost:5000/api/sellers/${id}/products/${productId}`, theProduct)
+		return this.http.put(`http://localhost:5000/api/sellers/${sellerId}/products/${productId}`, theProduct)
 		.map(response => {
 			return <SellerProduct> response.json();
 		});
+	}
+
+	editSeller(seller: Seller): Observable<Seller> {
+		const sellerId = seller.id;
+		console.log(`http://localhost:5000/api/sellers/${sellerId}`);
+		return this.http.put(`http://localhost:5000/api/sellers/${sellerId}`, seller)
+		.map(response => {
+			return <Seller> response.json();
+		})
 	}
 
 	addNewSeller(seller: Seller): Observable<Seller> {

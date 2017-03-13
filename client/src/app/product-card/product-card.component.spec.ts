@@ -26,7 +26,7 @@ describe('ProductCardComponent', () => {
 				provide: NgbModal,
 				useValue: mockModal
 			}],
-			schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
 			.compileComponents();
 	}));
@@ -38,6 +38,11 @@ describe('ProductCardComponent', () => {
 	});
 
 	it('should create', () => {
+		// arrange
+		// act
+		fixture.detectChanges();
+		// assert
+		
 		expect(component).toBeTruthy();
 	});
 });

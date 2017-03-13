@@ -4,6 +4,7 @@
 	<h3>Flokkur: {{seller.category}} </h3><br>
 </div>
 
+<button class="btn-primary" (click)="editSeller()">Breyta seljanda</button>
 <button class="btn-primary" (click)="addProduct()">Bæta við varningi</button>
 
 <ngb-tabset>
@@ -12,7 +13,9 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of products">
 					<div class="card">
-						<app-product-card [product]="p" (productUpdated)="onProductEdited($event)">
+						<app-product-card 
+							[product]="p" 
+							(productUpdated)="onProductEdited($event)">
 						</app-product-card>
 					</div>
 				</div>
@@ -24,7 +27,9 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of topTenProducts">
 					<div class="card">
-						<app-product-card [product]="p" (productUpdated)="onProductEdited($event)">
+						<app-product-card 
+							[product]="p" 
+							(productUpdated)="onProductEdited($event)">
 						</app-product-card>
 					</div>
 				</div>

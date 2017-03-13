@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
+import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component'
 
 
 @Component({
@@ -31,19 +32,19 @@ export class SellerDetailsComponent implements OnInit {
 			// afrita allt products yfir í toTenProducts
 			this.topTenProducts = this.products.slice(0);
 			// raða topTenProducts eftir quantitySold
-			this.topTenProducts.sort( (a, b) => {
-				if(a.quantitySold < b.quantitySold) {
+			this.topTenProducts.sort((a, b) => {
+				if (a.quantitySold < b.quantitySold) {
 					return 1;
 				}
-				if(a.quantitySold > b.quantitySold) {
+				if (a.quantitySold > b.quantitySold) {
 					return -1;
 				}
-				if(a.quantitySold === b.quantitySold) {
+				if (a.quantitySold === b.quantitySold) {
 					return 0;
 				}
 			});
 			// taka fyrstu 10 stökin af topTenProducts
-			this.topTenProducts = this.topTenProducts.slice(0,10);
+			this.topTenProducts = this.topTenProducts.slice(0, 10);
 		});
 
 		this.service.getSellerById(this.sellerId).subscribe(result => {
@@ -83,6 +84,27 @@ export class SellerDetailsComponent implements OnInit {
 			//TODO: skilaboð um að hætta
 			console.log("dialog was cancelled");
 			console.log(err);
+		});
+	}
+
+	editSeller() {
+		const modalInstance = this.modalService.open(SellerDlgComponent)
+		const backupSeller = {
+			name: this.seller.name,
+			id: this.seller.id,
+			category: this.seller.category,
+			imagePath: this.seller.imagePath
+		};
+		modalInstance.componentInstance.seller = this.seller;
+		modalInstance.result.then(obj => {
+			console.log("dialog was closed using ok");
+			this.service.editSeller(obj).subscribe(editResult => {
+				this.toastrService.success('Seljandanum ' + editResult.name + ' var breytt', 'Seljanda breytt')
+			});
+		}).catch(err => {
+			this.seller = backupSeller;
+			// TODO: display cancel message
+			console.log("onEdit-productcardComp: ", err);
 		});
 	}
 

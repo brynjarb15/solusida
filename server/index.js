@@ -123,7 +123,8 @@ app.post("/api/sellers", (req, res) => {
 
 app.put("/api/sellers/:id", (req, res) => {
 	// Check if we can find the seller:
-	var seller = findSellerById(req.params.id);
+	// -----------------------------bætti við parseInt herna----------------------------
+	var seller = findSellerById(parseInt(req.params.id));
 	if (!seller) {
 		res.statusCode = 404;
 		return res.send('Error 404: No seller found!');
@@ -175,6 +176,7 @@ app.post("/api/sellers/:id/products", (req, res) => {
 
 	// Calculate new ID (using super complicated method):
 	var newId = _.maxBy(products, (p) => p.product.id).product.id + 1;
+	// -----------------------------breytum path i imagePath herna----------------------------
 	newProduct = createProduct(seller.id, newId, req.body.name, req.body.price, 0, req.body.quantityInStock, req.body.imagePath);
 	products.push(newProduct);
 

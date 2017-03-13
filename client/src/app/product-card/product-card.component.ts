@@ -23,10 +23,21 @@ export class ProductCardComponent implements OnInit {
 
 	onEdit() {
 		const modalInstance = this.modalService.open(ProductDlgComponent)
+		const backupProduct = {
+			id: this.product.id,
+			name: this.product.name,
+			price: this.product.price,
+			quantityInStock: this.product.quantityInStock,
+			quantitySold: this.product.quantitySold,
+			imagePath: this.product.imagePath
+		};
+
 		modalInstance.componentInstance.product = this.product;
 		modalInstance.result.then(obj => {
 			this.productUpdated.emit(obj);
 		}).catch(err => {
+			this.product = backupProduct;
+			// TODO: display cancel message
 			console.log("onEdit-productcardComp: ", err);
 		});
 	}
