@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SellersService, SellerProduct, Seller } from '../sellers.service'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
+import { ToastrService} from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
 	selector: 'app-seller-details',
@@ -12,27 +15,32 @@ export class SellerDetailsComponent implements OnInit {
 
 	products: SellerProduct[];
 	private seller: Seller;
+	sellerId: number;
 
 	constructor(private modalService: NgbModal,
-				private service: SellersService) { }
+				private service: SellersService,
+				private toastrService: ToastrService,
+				private route: ActivatedRoute,) { }
 
 	ngOnInit() {
-
-		this.service.getSellerProduct(1).subscribe(result => {
-			this.products = result;
+		this.sellerId = this.route.snapshot.params['id'];
+		this.service.getSellerProduct(this.sellerId).subscribe(productResult => {
+			this.products = productResult;
 		});
 
-		this.service.getSellerById(1).subscribe(result => {
+		
+		this.service.getSellerById(this.sellerId).subscribe(result => {
 			this.seller = result;
 		}, (err) => {
 			// TODO: display toastr!
 			console.log('Something failed');
 		});
-
 	}
 
+	//skoða hvort virki
 	onProductEdited(p: SellerProduct) {
-		this.service.editProduct(p, this.seller.id).subscribe(result => {
+		this.service.editProduct(p, this.sellerId).subscribe(editResult => {
+			this.toastrService.success('Vörunni ' + p.name + ' var breytt', 'Breytt vara')
 		});
 	}
 
@@ -46,12 +54,16 @@ export class SellerDetailsComponent implements OnInit {
 			imagePath: ''
 		};		
 		modalInstance.result.then(obj => {
-		this.service.addProduct(obj, this.seller.id).subscribe(result => {
-			console.log(obj, " has been added");
-		});
 			console.log("dialog was closed using ok");
-			console.log(obj);
+			this.service.addProduct(obj, this.sellerId).subscribe(addResult => {
+				console.log(obj, " has been added");
+				this.service.getSellerProduct(this.sellerId).subscribe(allProducts => {
+					this.products = allProducts;
+				});
+				this.toastrService.success('Vörunni ' + obj.name + ' var bætt við', 'Ný vara')
+			});
 		}).catch(err => {
+			//TODO: skilaboð um að hætta
 			console.log("dialog was cancelled");
 			console.log(err);
 		});

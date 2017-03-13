@@ -5,33 +5,28 @@
 	</button>
 </div>
 <div class="modal-body">
-  <div>
-    Nafn: <input [(ngModel)]="product.name" autofocus/>
-    <div *ngIf="noName">
-      Nafn er nauðsynlegt á vöru*
-    </div>
+  Nafn:
+  <input [(ngModel)]="product.name" autofocus/><br>
+  <div *ngIf="noName">
+    Nafn er nauðsynlegt á vöru*
   </div>
-  <div>
-    Verð <input [(ngModel)]="product.price" />
-    <div *ngIf="negPrice">
-      vitlaust inntak*
-    </div>
+  Verð:
+  <input [(ngModel)]="product.price" /><br>
+  <div *ngIf="negPrice">
+    vitlaust inntak*
   </div>
-  <div>
-    Magn <input [(ngModel)]="product.quantityInStock" />
-    <div *ngIf="negInStock">
+  Magn:
+  <input [(ngModel)]="product.quantityInStock" /><br>
+  <div *ngIf="negInStock">
+    Vitlaust inntak*
+  </div>
+  Selt magn:
+  <input [(ngModel)]="product.quantitySold" /><br>
+    <div *ngIf="negSold">
       Vitlaust inntak*
-    </div>
   </div>
-  <div>
-    Selt magn <input [(ngModel)]="product.quantitySold" />
-      <div *ngIf="negSold">
-        Vitlaust inntak*
-    </div>
-  </div>
-  <div>
-    Mynd <input [(ngModel)]="product.imagePath" />
-  </div>
+  Mynd:
+  <input [(ngModel)]="product.imagePath" /><br>
 </div>
 <div class="modal-footer">
 	<button type="button" class="btn btn-secondary" (click)='onCancel()'>Canel</button>

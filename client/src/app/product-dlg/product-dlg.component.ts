@@ -17,12 +17,15 @@ export class Product {
 })
 export class ProductDlgComponent implements OnInit {
 
+  parentClass = 'has-danger';
+	childClass = 'form-control-danger';
+
   private product: Product;
-  noName;
-  negPrice;
-  negInStock;
-  negSold;
-  validInput;
+  noName: boolean;
+  negPrice: boolean;
+  negInStock: boolean;
+  negSold: boolean;
+  validInput: boolean;
 
   constructor(public activeModal: NgbActiveModal) { }
 

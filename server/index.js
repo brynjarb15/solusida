@@ -160,7 +160,6 @@ app.get("/api/sellers/:id/products", (req, res) => {
 
 // Adds a product to the catalog of a given seller:
 app.post("/api/sellers/:id/products", (req, res) => {
-
 	// Validate seller:
 	var seller = findSellerById(parseInt(req.params.id));
 	if (!seller) {
@@ -176,7 +175,7 @@ app.post("/api/sellers/:id/products", (req, res) => {
 
 	// Calculate new ID (using super complicated method):
 	var newId = _.maxBy(products, (p) => p.product.id).product.id + 1;
-	newProduct = createProduct(seller.id, newId, req.body.name, req.body.price, 0, req.body.quantityInStock, req.body.path);
+	newProduct = createProduct(seller.id, newId, req.body.name, req.body.price, 0, req.body.quantityInStock, req.body.imagePath);
 	products.push(newProduct);
 
 	// Success!

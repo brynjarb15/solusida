@@ -1,20 +1,28 @@
-<p>
-	seller-details works!
-</p>
 <button class="btn-primary" (click)="addProduct()">Bæta við varningi</button>
 <div *ngIf="seller">
 	<h2>
-		{{seller.name}}
+		{{seller.name}}<br>
+		{{seller.category}}<br>
 	</h2>
-	<img src='{{seller.imagePath}}' alt="image of the seller" />
+	<img src='{{seller.imagePath}}' alt="image of the seller" style="width: 200px"/>
 </div>
 
-<div *ngFor="let p of products">
-	<app-product-card 
-	[product]="p" 
-	(productUpdated)="onProductEdited($event)">
-
-	</app-product-card>
-</div>
+<ngb-tabset>
+	<ngb-tab title="All Products">
+		<template ngbTabContent>
+			<div *ngFor="let p of products">
+				<app-product-card 
+				[product]="p" 
+				(productUpdated)="onProductEdited($event)">
+				</app-product-card>
+			</div>
+		</template>
+	</ngb-tab>
+	<ngb-tab title="Top 10">
+		<template ngbTabContent>
+			<p>Hér koma topp 10 hlutirnir</p>
+		</template>
+	</ngb-tab>
+</ngb-tabset>
 
 <template ngbModalContainer></template>

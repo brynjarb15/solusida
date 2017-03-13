@@ -58,7 +58,7 @@ export class SellersService {
 			return <SellerProduct> response.json();
 		});
 	}
-	
+
 	addNewSeller(seller: Seller): Observable<Seller> {
 		return this.http.post('http://localhost:5000/api/sellers/', seller)
 		.map(response => {
