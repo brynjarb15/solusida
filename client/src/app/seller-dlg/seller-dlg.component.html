@@ -16,14 +16,14 @@
 		Flokkur:
 		<input [ngClass]='isCategoryClass' class='form-control' [(ngModel)]='seller.category' />
 		<div class='form-control-feedback' *ngIf='notCategory'>
-			Það þarf að slá inn nafn
+			Það þarf að slá inn flokk
 		</div>
 	</div>
 	<div [ngClass]='isImagePathParentClass'>
 		Slóð á Mynd:
 		<input [ngClass]='isImagePathClass' class='form-control' [(ngModel)]='seller.imagePath' />
 		<div class='form-control-feedback' *ngIf='notImagePath'>
-			Það þarf að slá inn nafn
+			Það þarf að slá inn slóð á mynd
 		</div>
 	</div>
 </div>
