@@ -1,34 +1,44 @@
-<div class="modal-header">
-  <h4 class="modal-title">Bæta við varningi</h4>
-	<button type="button" class="close" aria-label="Close" (click)='onCancel()'>
-		<span aria-hidden="true">&times;</span>
+<div class='modal-header'>
+  <h4 class='modal-title'>Bæta við vöru</h4>
+  <button type='button' class='close' aria-label='Close' (click)='onCancel()'>
+		<span aria-hidden='true'>&times;</span>
 	</button>
 </div>
-<div class="modal-body">
-  Nafn:
-  <input [(ngModel)]="product.name" autofocus/><br>
-  <div *ngIf="noName">
-    Nafn er nauðsynlegt á vöru*
+<div class='modal-body'>
+  <div [ngClass]='isNameParentClass'>
+    Nafn:
+    <input [ngClass]='isNameClass' class='form-control' [(ngModel)]='product.name' autofocus/>
+    <div class='form-control-feedback' *ngIf='noName'>
+      Nafn er nauðsynlegt á vöru*
+    </div>
   </div>
-  Verð:
-  <input [(ngModel)]="product.price" /><br>
-  <div *ngIf="negPrice">
-    vitlaust inntak*
+  <div [ngClass]='isPriceParentClass'>
+    Verð:
+    <input [ngClass]='isPriceClass' class='form-control' [(ngModel)]='product.price' />
+    <div class='form-control-feedback' *ngIf='negPrice'>
+      vitlaust inntak*
+    </div>
   </div>
-  Magn:
-  <input [(ngModel)]="product.quantityInStock" /><br>
-  <div *ngIf="negInStock">
+  <div [ngClass]='isInStockParentClass'>
+     Magn: <input [ngClass]='isInStockClass' class='form-control' [(ngModel)]='product.quantityInStock'
+  />
+  <div class='form-control-feedback' *ngIf='negInStock'>
     Vitlaust inntak*
   </div>
-  Selt magn:
-  <input [(ngModel)]="product.quantitySold" /><br>
-    <div *ngIf="negSold">
-      Vitlaust inntak*
-  </div>
-  Mynd:
-  <input [(ngModel)]="product.imagePath" /><br>
 </div>
-<div class="modal-footer">
-	<button type="button" class="btn btn-secondary" (click)='onCancel()'>Canel</button>
-	<button type="button" class="btn btn-sucess" (click)='onOk()'>OK</button>
+<div [ngClass]='isSoldParentClass'>
+  Selt magn:
+  <input [ngClass]='isSoldClass' class='form-control' [(ngModel)]='product.quantitySold' />
+  <div class='form-control-feedback' *ngIf='negSold'>
+    Vitlaust inntak*
+  </div>
+</div>
+<div>
+  Mynd:
+  <input class='form-control' [(ngModel)]='product.imagePath' />
+</div>
+</div>
+<div class='modal-footer'>
+  <button type='button' class='btn btn-secondary' (click)='onCancel()'>Canel</button>
+  <button type='button' class='btn btn-sucess' (click)='onOk()'>OK</button>
 </div>
