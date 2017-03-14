@@ -160,7 +160,7 @@ describe('ListSellersComponent', () => {
 			expect(component.sellers).toBe(testSellers);
 		});
 
-		/*it('shoud show success toastr', () => {
+		it('shoud show success toastr', () => {
 			// arrange
 			// act
 			component.addSeller();
@@ -170,12 +170,12 @@ describe('ListSellersComponent', () => {
 
 		it('should show warning toastr when action is canceled', () => {
 			// arrange
-			OtherMockModal.okPushed = false;
+			mockModal.okPushed = false;
 			// act
 			component.addSeller();
 			// assert
 			expect(mockToastr.warning).toHaveBeenCalled();
-		});*/
+		});
 	});
 });
 
