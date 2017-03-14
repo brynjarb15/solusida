@@ -1,16 +1,16 @@
-<h2>
-	Seljendur
-</h2>
-<div id='popular'>
-	<div (click)="goViewSeller(mostPopularSeller)">
-		<h3>Vinsælasta varan!</h3>
-		<h3 *ngIf='noProducts'>Engar vörur til að sýna</h3>
-			<div class='card'>
-				<app-product-card [product]='mostPopularProd' (productUpdated)='onProductEdited($event)'>
-				</app-product-card>
-			</div>
+<h3 class='pop'>Vinsælasta varan!</h3>
+<div class='left'>
+	<h3 *ngIf='noProducts'>Engar vörur til að sýna</h3>
+	<div class='row'>
+		<div class='card'>
+			<app-product-card (click)='goViewSeller(mostPopularSeller)' [product]='mostPopularProd' (productUpdated)='onProductEdited($event)'>
+			</app-product-card>
+		</div>
 	</div>
 </div>
+<h2 class='right'>
+	Seljendur
+</h2>
 <button class='btn-primary' (click)='addSeller()'>Bæta við seljanda</button>
 <h2 *ngIf='noSellers'>Engir seljendur eru til</h2>
 <table class='table table-hover table-striped'>

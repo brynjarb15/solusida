@@ -224,10 +224,10 @@ app.put("/api/sellers/:id/products/:prodId", (req, res) => {
 
 	product.product.name = req.body.name;
 	product.product.price = req.body.price;
-	product.product.quantityInStock = req.body.quantityInStock;
-	//bætti þessum tveimur breytum við
-	product.product.quantitySold = req.body.quantitySold;
 	product.product.imagePath = req.body.imagePath;
+	//bætti þessum tveimur breytum við
+	product.product.quantityInStock = req.body.quantityInStock;
+	product.product.quantitySold = req.body.quantitySold;
 	
 
 	// Success!
