@@ -6,13 +6,19 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {  ToastrConfig } from 'ngx-toastr';
 
 describe('AppComponent', () => {
+
+	const mockToastrConfig = {
+		preventDuplicates: Boolean
+	};
+
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [
 				AppComponent
 			],
 			providers: [ {
-				provide: ToastrConfig
+				provide: ToastrConfig,
+				useValue: mockToastrConfig
 			}],
 			schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 		});
