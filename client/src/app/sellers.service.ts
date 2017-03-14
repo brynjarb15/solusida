@@ -48,13 +48,6 @@ export class SellersService {
 			});
 	}
 
-	getMostPopularProduct(): Observable<SellerProduct> {
-		return this.http.get('http://localhost:5000/api/sellers')
-			.map(response => {
-				return <SellerProduct>response.json();
-			});
-	}
-
 	getSellers(): Observable<Seller[]> {
 		return this.http.get('http://localhost:5000/api/sellers')
 			.map(response => {
