@@ -9,7 +9,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { SellerDlgComponent } from './seller-dlg.component';
 
-xdescribe('SellerDlgComponent', () => {
+describe('SellerDlgComponent', () => {
 	let component: SellerDlgComponent;
 	let fixture: ComponentFixture<SellerDlgComponent>;
 
@@ -110,7 +110,7 @@ xdescribe('SellerDlgComponent', () => {
 			// act // assert
 			expect(component.validateInput()).toBeFalsy();
 		}));
-		it('should return false', async(() => {
+		it('should return true', async(() => {
 			// arrange
 			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
@@ -121,20 +121,20 @@ xdescribe('SellerDlgComponent', () => {
 			};
 
 			// act // assert
-			expect(component.validateInput()).toBeFalsy();
+			expect(component.validateInput()).toBeTruthy();
 		}));
-		it('should return false', async(() => {
+		it('should return true', async(() => {
 			// arrange
 			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
 				name: 'Pall Hermansson',
-				category: 'Föt',
-				imagePath: '',
+				category: '',
+				imagePath: 'someImagePath',
 				id: 0
 			};
 
 			// act // assert
-			expect(component.validateInput()).toBeFalsy();
+			expect(component.validateInput()).toBeTruthy();
 		}));
 		it('should return false', async(() => {
 			// arrange
@@ -142,12 +142,12 @@ xdescribe('SellerDlgComponent', () => {
 			component.seller = {
 				name: 'Pall Hermansson',
 				category: '',
-				imagePath: 'pathToPhoto',
+				imagePath: '',
 				id: 0
 			};
 
 			// act // assert
-			expect(component.validateInput()).toBeFalsy();
+			expect(component.validateInput()).toBeTruthy();
 		}));
 		it('should return true', async(() => {
 			// arrange
@@ -161,6 +161,19 @@ xdescribe('SellerDlgComponent', () => {
 
 			// act // assert
 			expect(component.validateInput()).toBeTruthy();
+		}));
+		it('should return false', async(() => {
+			// arrange
+			// const sellerDlg = fixture.debugElement.componentInstance;
+			component.seller = {
+				name: '',
+				category: 'Föt',
+				imagePath: 'pathToPhoto',
+				id: 0
+			};
+
+			// act // assert
+			expect(component.validateInput()).toBeFalsy();
 		}));
 	});
 
