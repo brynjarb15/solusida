@@ -1,6 +1,6 @@
 <h3 class='pop' (click)='goViewSeller(mostPopularSeller)'>Vinsælasta varan!</h3>
 <div class='left' >
-	<h3 *ngIf='noProducts'>Engar vörur til að sýna</h3>
+	<h3 class='villa' *ngIf='noProducts'>Engin vara</h3>
 	<div *ngIf='mostPopularProd'>
 		<h4 (click)='goViewSeller(mostPopularSeller)'>{{mostPopularProd.name}}</h4>
 		<img src='{{mostPopularProd.imagePath}}' alt='image of the seller' (click)='goViewSeller(mostPopularSeller)' width='150px'/><br>

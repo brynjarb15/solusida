@@ -17,10 +17,10 @@ export class ListSellersComponent implements OnInit {
 	noSellers = true;
 	allIds = [];
 	mostPopularItems = [];
-	mostPopularSellerId = -1;
 	quantity = -1;
 	mostPopularProd: SellerProduct;
 	mostPopularSeller: Seller;
+	noProducts = true;
 
 	constructor(private modalService: NgbModal,
 		private service: SellersService,
@@ -44,8 +44,8 @@ export class ListSellersComponent implements OnInit {
 						if (this.mostPopularItems[j].quantitySold > this.quantity) {
 							this.quantity = this.mostPopularItems[j].quantitySold;
 							this.mostPopularProd = this.mostPopularItems[j];
-							//this.mostPopularSellerId = this.allIds[j];
 							this.mostPopularSeller = allSellers[j];
+							this.noProducts = false;
 						}
 					}
 				});
