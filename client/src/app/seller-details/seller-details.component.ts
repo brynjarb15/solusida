@@ -52,8 +52,8 @@ export class SellerDetailsComponent implements OnInit {
 	}
 
 	isProductInTop10(obj) {
-		for (let i = 0; i < this.products.length; i++) {
-			if (obj.id === this.products[i].id) {
+		for (let i = 0; i < this.topTenProducts.length; i++) {
+			if (obj.id === this.topTenProducts[i].id) {
 				return true;
 			}
 		}
