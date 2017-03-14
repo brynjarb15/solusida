@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SellerProduct } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ToastrService}  from 'ngx-toastr'
 
 
 
@@ -25,6 +26,8 @@ describe('ProductCardComponent', () => {
 			providers: [{
 				provide: NgbModal,
 				useValue: mockModal
+			}, {
+				provide: ToastrService
 			}],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})

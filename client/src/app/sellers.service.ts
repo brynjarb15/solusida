@@ -35,17 +35,17 @@ export class SellersService {
 		return this.http.get(`http://localhost:5000/api/sellers/${id}/products`, )
 			.map(response => {
 				return <SellerProduct[]>response.json().sort((a, b) => {
-															if (a.quantitySold < b.quantitySold) {
-																return 1;
-															}
-															if (a.quantitySold > b.quantitySold) {
-																return -1;
-															}
-															if (a.quantitySold === b.quantitySold) {
-																return 0;
-															};
-														}).slice(0,10);
-		});
+					if (a.quantitySold < b.quantitySold) {
+						return 1;
+					}
+					if (a.quantitySold > b.quantitySold) {
+						return -1;
+					}
+					if (a.quantitySold === b.quantitySold) {
+						return 0;
+					};
+				}).slice(0, 10);
+			});
 	}
 
 	getSellers(): Observable<Seller[]> {

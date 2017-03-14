@@ -51,9 +51,9 @@ export class SellerDetailsComponent implements OnInit {
 		});
 	}
 
-	isProductInTop10(obj){
-		for(let i = 0; i < this.products.length; i++) {
-			if(obj.id === this.products[i].id) {
+	isProductInTop10(obj) {
+		for (let i = 0; i < this.products.length; i++) {
+			if (obj.id === this.products[i].id) {
 				return true;
 			}
 		}
@@ -63,10 +63,10 @@ export class SellerDetailsComponent implements OnInit {
 	onProductEdited(p: SellerProduct) {
 		this.service.editProduct(p, this.sellerId).subscribe(editResult => {
 			this.toastrService.success('Vörunni ' + p.name + ' var breytt', 'Breytt vara');
-			
+
 			this.service.getTop10ForSeller(this.sellerId).subscribe(top10 => {
 				this.topTenProducts = top10;
-				if(this.isProductInTop10(p)) {
+				if (this.isProductInTop10(p)) {
 					this.toastrService.info('Varan ' + p.name + ' er á top 10 listanum', 'Top 10 vörur');
 				}
 			});
@@ -85,9 +85,9 @@ export class SellerDetailsComponent implements OnInit {
 				});
 				this.service.getTop10ForSeller(this.sellerId).subscribe(top10 => {
 					this.topTenProducts = top10;
-					if(this.isProductInTop10(obj)) {
-					this.toastrService.info('Varan ' + obj.name + ' er á top 10 listanum', 'Top 10 vörur');
-				}
+					if (this.isProductInTop10(obj)) {
+						this.toastrService.info('Varan ' + obj.name + ' er á top 10 listanum', 'Top 10 vörur');
+					}
 				});
 				this.toastrService.success('Vörunni ' + obj.name + ' var bætt við', 'Ný vara');
 			});

@@ -9,7 +9,7 @@ import { SellersService, Seller, SellerProduct } from '../sellers.service';
 import { Observable } from 'rxjs/Observable';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -43,10 +43,16 @@ class SellersServiceMock {
 		this.sellerProducts.push(theProduct);
 		return Observable.of(this.sellerProduct);
 	}
+	editSeller(seller: Seller): Observable<Seller> {
+		return Observable.of(this.seller);
+	}
 
+	getTop10ForSeller(id: number): Observable<SellerProduct[]> {
+		return Observable.of(this.sellerProducts);
+	}
 }
 
-xdescribe('SellerDetailsComponent', () => {
+describe('SellerDetailsComponent', () => {
 	let component: SellerDetailsComponent;
 	let fixture: ComponentFixture<SellerDetailsComponent>;
 	let modalService: NgbModal;
@@ -73,7 +79,8 @@ xdescribe('SellerDetailsComponent', () => {
 
 	const mockToastr = {
 		success: jasmine.createSpy('success'),
-		warning: jasmine.createSpy('warning')
+		warning: jasmine.createSpy('warning'),
+		info: jasmine.createSpy('info')
 	};
 
 
@@ -109,9 +116,13 @@ xdescribe('SellerDetailsComponent', () => {
 	const mockSnapshot = {
 		params: 1
 	};
-	const mockRouter = {
+	const mockActiveRouter = {
 		snapshot: mockSnapshot
 	};
+
+	const mockRouter = {
+		navigate: jasmine.createSpy('navigate');
+	}
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -127,6 +138,9 @@ xdescribe('SellerDetailsComponent', () => {
 				useValue: mockToastr
 			}, {
 				provide: ActivatedRoute,
+				useValue: mockActiveRouter
+			}, {
+				provide: Router,
 				useValue: mockRouter
 			}],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -166,7 +180,7 @@ xdescribe('SellerDetailsComponent', () => {
 		expect(component.products).toBeTruthy();
 	});
 
-	it('should have topTenProducts not equal to products', () => {
+	xit('should have topTenProducts not equal to products', () => {
 		// arrange
 		mockService.sellerProducts = testableProductData;
 		// act
@@ -185,6 +199,11 @@ xdescribe('SellerDetailsComponent', () => {
 	});
 
 	describe('onProductEdited()', () => {
+
+		beforeEach(() => {
+			component.products = testableProductData;
+		});
+
 		it('should display toastr', () => {
 			// arrange
 			const productToEdit = { id: 1, name: 'Palli', price: 999, quantityInStock: 15, quantitySold: 8, imagePath: 'pathAMynd' };
@@ -226,14 +245,15 @@ xdescribe('SellerDetailsComponent', () => {
 		});
 	});
 	describe('editSeller()', () => {
-		it('should call open on modalService', () => {
+		it('should show success toastr', () => {
 			// arrange
-			let spy = spyOn(mockModal, 'open').and.callThrough();
+			mockModal.okPhused = true;
 			component.seller = testableSeller;
 			// act
 			component.editSeller();
+			fixture.detectChanges();
 			// assert
-			expect(spy).not.toHaveBeenCalled();
+			expect(mockToastr.success).toHaveBeenCalled();
 		});
 	});
 });
