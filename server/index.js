@@ -177,7 +177,8 @@ app.post("/api/sellers/:id/products", (req, res) => {
 	// Calculate new ID (using super complicated method):
 	var newId = _.maxBy(products, (p) => p.product.id).product.id + 1;
 	// -----------------------------breytum path i imagePath herna----------------------------
-	newProduct = createProduct(seller.id, newId, req.body.name, req.body.price, 0, req.body.quantityInStock, req.body.imagePath);
+	//breytti þar sem stendur req.body.quantitySold úr 0 í þetta og path í imagePath
+	newProduct = createProduct(seller.id, newId, req.body.name, req.body.price, req.body.quantitySold, req.body.quantityInStock, req.body.imagePath);
 	products.push(newProduct);
 
 	// Success!
@@ -223,7 +224,11 @@ app.put("/api/sellers/:id/products/:prodId", (req, res) => {
 
 	product.product.name = req.body.name;
 	product.product.price = req.body.price;
+	product.product.quantityInStock = req.body.quantityInStock;
+	//bætti þessum tveimur breytum við
+	product.product.quantitySold = req.body.quantitySold;
 	product.product.imagePath = req.body.imagePath;
+	
 
 	// Success!
 	res.statusCode = 200;
