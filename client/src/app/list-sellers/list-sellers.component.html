@@ -1,9 +1,9 @@
-<h3 class='pop'>Vinsælasta varan!</h3>
-<div class='left'>
+<h3 class='pop' (click)='goViewSeller(mostPopularSeller)'>Vinsælasta varan!</h3>
+<div class='left' >
 	<h3 *ngIf='noProducts'>Engar vörur til að sýna</h3>
 	<div class='row'>
 		<div class='card'>
-			<app-product-card (click)='goViewSeller(mostPopularSeller)' [product]='mostPopularProd' (productUpdated)='onProductEdited($event)'>
+			<app-product-card [product]='mostPopularProd' (productUpdated)='onProductEdited($event)'>
 			</app-product-card>
 		</div>
 	</div>

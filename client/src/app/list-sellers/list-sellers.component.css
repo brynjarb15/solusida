@@ -1,5 +1,8 @@
 .pop{
-    margin-left:37%;
+    margin-left:35%;
+}
+.pop:hover{
+    color: blue;
 }
 .left{
     margin-left: 40%;
