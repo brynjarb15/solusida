@@ -26,7 +26,7 @@ export class ProductDlgComponent implements OnInit {
 		quantitySold: 0,
 		imagePath: ''
 	};
-
+	// bootstrap calles used in the html
 	parentClass = 'has-danger';
 	childClass = 'form-control-danger';
 
@@ -49,16 +49,17 @@ export class ProductDlgComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	// close the dialog without sending the product forward
 	onCancel() {
 		this.activeModal.dismiss();
 	}
-
+	// close the dialog and send the product forward
 	onOk() {
 		if (this.validInputForProduct()) {
 			this.activeModal.close(this.product);
 		}
 	}
-
+	// there must be a name and numbers can't be negative
 	validInputForProduct(): boolean {
 
 		if (this.product.name === '') {

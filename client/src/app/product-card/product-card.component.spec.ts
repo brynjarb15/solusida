@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SellerProduct } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ToastrService } from 'ngx-toastr'
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -18,7 +18,7 @@ describe('ProductCardComponent', () => {
 
 	const mockToastr = {
 		warning: jasmine.createSpy('warning')
-	}
+	};
 
 	const testableSeller = {id: 0, name: 'Palli', category: 'Fot', imagePath: 'http://test.com/testImageFot.jpg'};
 	const testableProduct = { id: 1, name: 'Skor', price: 999, quantitySold: 15, quantityInStock: 25, imagePath: 'pathAMynd' };
@@ -49,7 +49,7 @@ describe('ProductCardComponent', () => {
 				}
 			};
 		}
-	}
+	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -69,7 +69,6 @@ describe('ProductCardComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ProductCardComponent);
 		component = fixture.componentInstance;
-		// fixture.detectChanges();
 	});
 
 	it('should create', () => {
@@ -87,7 +86,7 @@ describe('ProductCardComponent', () => {
 			// arrange
 			mockModal.okPushed = true;
 			component.product = testableProduct;
-			let spy = spyOn(component.productUpdated, 'emit');
+			const spy = spyOn(component.productUpdated, 'emit');
 			// act
 			component.onEdit();
 			// assert

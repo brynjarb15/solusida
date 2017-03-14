@@ -34,15 +34,14 @@ describe('ListSellersComponent', () => {
 	const mockService = new SellersServiceMock();
 	let component: ListSellersComponent;
 	let fixture: ComponentFixture<ListSellersComponent>;
-	let modalService: NgbModal;
 
 	const testSellers = [{ name: 'Palli1', category: 'Fot', imagePath: 'http://test.com/testImageFot.jpg', id: 1 },
 	{ name: 'Palli2', category: 'Stolar', imagePath: 'http://test.com/testImageStolar.jpg', id: 2 },
 	{ name: 'Palli3', category: 'Bilar', imagePath: 'http://test.com/testImageBilar.jpg', id: 3 },
 	{ name: 'Palli4', category: 'Battery', imagePath: 'http://test.com/testImageBattery.jpg', id: 4 }];
 
-	const testableSeller = {id: 0, name: 'Palli', category: 'Fot', imagePath: 'http://test.com/testImageFot.jpg'};
-	
+	const testableSeller = { id: 0, name: 'Palli', category: 'Fot', imagePath: 'http://test.com/testImageFot.jpg' };
+
 	const mockRouter = {
 		navigate: jasmine.createSpy('navigate')
 	};
@@ -51,7 +50,8 @@ describe('ListSellersComponent', () => {
 		success: jasmine.createSpy('success'),
 		warning: jasmine.createSpy('warning'),
 		error: jasmine.createSpy('error')
-	}
+	};
+
 	const mockModal = {
 		okPushed: true,
 		open: function () {
@@ -79,7 +79,7 @@ describe('ListSellersComponent', () => {
 				}
 			};
 		}
-	}
+	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -105,7 +105,6 @@ describe('ListSellersComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ListSellersComponent);
 		component = fixture.componentInstance;
-		// fixture.detectChanges();
 	});
 
 	it('should create', () => {

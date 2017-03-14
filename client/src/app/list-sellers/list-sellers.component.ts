@@ -34,20 +34,18 @@ export class ListSellersComponent implements OnInit {
 		});
 
 		this.service.getSellers().subscribe(allSellers => {
-			for(let i = 0; i < allSellers.length; i++) {
+			for (let i = 0; i < allSellers.length; i++) {
 				this.allIds.push(this.sellers[i].id);
 			}
-			for(let j = 0; j < this.allIds.length; j++) {
+			for (let j = 0; j < this.allIds.length; j++) {
 				this.service.getTop10ForSeller(this.allIds[j]).subscribe(top10 => {
-					this.mostPopularItems.push(top10.slice(0,1)[0])
-					if(this.mostPopularItems[j] != undefined){
-						if(this.mostPopularItems[j].quantitySold > this.quantity) {
+					this.mostPopularItems.push(top10.slice(0, 1)[0])
+					if (this.mostPopularItems[j] != undefined) {
+						if (this.mostPopularItems[j].quantitySold > this.quantity) {
 							this.quantity = this.mostPopularItems[j].quantitySold;
 							this.mostPopularProd = this.mostPopularItems[j];
 							//this.mostPopularSellerId = this.allIds[j];
 							this.mostPopularSeller = allSellers[j];
-							console.log("prod: ",this.mostPopularProd.name);
-							console.log("seller: ", this.mostPopularSeller);
 						}
 					}
 				});
@@ -58,9 +56,7 @@ export class ListSellersComponent implements OnInit {
 	addSeller() {
 		const modalInstance = this.modalService.open(SellerDlgComponent);
 		modalInstance.result.then(obj => {
-			console.log('Dialog was closed using Ok');
 			this.service.addNewSeller(obj).subscribe(newSeller => {
-				console.log('adding', newSeller);
 				this.service.getSellers().subscribe(allSellers => {
 					this.sellers = allSellers;
 					this.noSellers = this.sellers.length === 0;

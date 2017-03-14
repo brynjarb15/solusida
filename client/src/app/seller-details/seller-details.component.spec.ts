@@ -22,11 +22,9 @@ class SellersServiceMock {
 	seller: Seller;
 	sellerById = true;
 	getSellerProduct(id: number): Observable<SellerProduct[]> {
-		// þarf að breyta
 		return Observable.of(this.sellerProducts);
 	}
 	getSellerById(id: number): Observable<Seller> {
-		// þarf að breyta
 		const ob = new Observable<Seller>(observable => {
 			if (this.sellerById) {
 				return observable.next(this.seller);
@@ -56,7 +54,6 @@ class SellersServiceMock {
 describe('SellerDetailsComponent', () => {
 	let component: SellerDetailsComponent;
 	let fixture: ComponentFixture<SellerDetailsComponent>;
-	let modalService: NgbModal;
 
 	const testableProductData = [{ id: 1, name: 'Skor', price: 999, quantitySold: 15, quantityInStock: 25, imagePath: 'pathAMynd' },
 		{ id: 2, name: 'Buxur', price: 20000, quantitySold: 10, quantityInStock: 5, imagePath: 'pathAMynd' },
@@ -134,7 +131,7 @@ describe('SellerDetailsComponent', () => {
 
 	const mockRouter = {
 		navigate: jasmine.createSpy('navigate');
-	}
+	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -167,18 +164,7 @@ describe('SellerDetailsComponent', () => {
 
 	it('should create', () => {
 		// arrange
-		/* mockService.sellerProducts = [{ id: 1, name: 'Skor', price: 999, quantitySold: 15, quantityInStock: 25, imagePath: 'pathAMynd' },
-									  { id: 2, name: 'Buxur', price: 20000, quantitySold: 10, quantityInStock: 5, imagePath: 'pathAMynd' },
-									  { id: 3, name: 'Peysa', price: 30000, quantitySold: 5, quantityInStock: 35, imagePath: 'pathAMynd' },
-									  { id: 4, name: 'Hanskar', price: 40000, quantitySold: 25, quantityInStock: 5, imagePath: 'pathAMynd' },
-									  { id: 5, name: 'Hufa', price: 50000, quantitySold: 35, quantityInStock: 45, imagePath: 'pathAMynd' },
-									  { id: 6, name: 'Buxur', price: 60000, quantitySold: 45, quantityInStock: 55, imagePath: 'pathAMynd' },
-									  { id: 7, name: 'Sokkar', price: 70000, quantitySold: 65, quantityInStock: 75, imagePath: 'pathAMynd' },
-									  { id: 8, name: 'Taska', price: 80000, quantitySold: 99, quantityInStock: 85, imagePath: 'pathAMynd' },
-									  { id: 9, name: 'Hulstur', price: 90000, quantitySold: 56, quantityInStock: 995, imagePath: 'pathAMynd' },
-									  { id: 10, name: 'Flaska', price: 110000, quantitySold: 23, quantityInStock: 75, imagePath: 'pathAMynd' },
-									  { id: 11, name: 'Teppi', price: 110000, quantitySold: 11, quantityInStock: 65, imagePath: 'pathAMynd' }]
-		*/// act
+		// act
 		// assert
 		expect(component).toBeTruthy();
 	});
@@ -309,7 +295,7 @@ describe('SellerDetailsComponent', () => {
 		it('should return false if parameter is not in topTenProducts', () => {
 			// arrange
 			component.topTenProducts = top10OfTestableProductData;
-			const param = { id: 133, name: 'Kjoll', price: 20000, quantitySold: 3, quantityInStock: 1, imagePath: 'pathAMynd' },
+			const param = { id: 133, name: 'Kjoll', price: 20000, quantitySold: 3, quantityInStock: 1, imagePath: 'pathAMynd' };
 			// act
 			const returnValue = component.isProductInTop10(param);
 			// assert

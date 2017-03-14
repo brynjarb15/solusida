@@ -46,8 +46,8 @@ export class SellerDetailsComponent implements OnInit {
 		this.service.getSellerById(this.sellerId).subscribe(result => {
 			this.seller = result;
 		}, (err) => {
+			this.router.navigate(['sellers']);
 			this.toastrService.error('Seljandi finnst ekki', 'Villa');
-			console.log('Something failed');
 		});
 	}
 
@@ -73,14 +73,12 @@ export class SellerDetailsComponent implements OnInit {
 		});
 	}
 
+	// opens dialog with the ProductDlgComponent which then returns the input
 	addProduct() {
 		const modalInstance = this.modalService.open(ProductDlgComponent);
 		modalInstance.result.then(obj => {
-			console.log('dialog was closed using ok');
 			this.service.addProduct(obj, this.sellerId).subscribe(addResult => {
-				console.log('addResult', addResult);
 				this.service.getSellerProduct(this.sellerId).subscribe(allProducts => {
-					console.log('getting Seller product');
 					this.products = allProducts;
 				});
 				this.service.getTop10ForSeller(this.sellerId).subscribe(top10 => {
@@ -93,8 +91,6 @@ export class SellerDetailsComponent implements OnInit {
 			});
 		}).catch(err => {
 			this.toastrService.warning('Hætt var við að bæta við vöru', 'Ný vara');
-			console.log('dialog was cancelled');
-			console.log(err);
 		});
 	}
 
@@ -114,7 +110,6 @@ export class SellerDetailsComponent implements OnInit {
 		}).catch(err => {
 			this.seller = backupSeller;
 			this.toastrService.warning('Hætt var við að breyta seljanda', 'Breyta seljanda');
-			console.log('onEdit-productcardComp: ', err);
 		});
 	}
 

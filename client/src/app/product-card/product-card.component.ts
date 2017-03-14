@@ -40,7 +40,6 @@ export class ProductCardComponent implements OnInit {
 		}).catch(err => {
 			this.product = backupProduct;
 			this.toastrService.warning('Hætt var við að breyta vöru', 'Breyta vöru');
-			console.log('onEdit-productcardComp: ', err);
 		});
 	}
 }

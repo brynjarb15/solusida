@@ -99,7 +99,6 @@ describe('SellerDlgComponent', () => {
 	describe('validatedInput', () => {
 		it('should return false', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
 				name: '',
 				category: '',
@@ -112,7 +111,6 @@ describe('SellerDlgComponent', () => {
 		}));
 		it('should return true', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
 				name: 'Pall Hermansson',
 				category: 'Föt',
@@ -125,7 +123,6 @@ describe('SellerDlgComponent', () => {
 		}));
 		it('should return true', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
 				name: 'Pall Hermansson',
 				category: '',
@@ -138,7 +135,6 @@ describe('SellerDlgComponent', () => {
 		}));
 		it('should return false', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
 				name: 'Pall Hermansson',
 				category: '',
@@ -151,7 +147,6 @@ describe('SellerDlgComponent', () => {
 		}));
 		it('should return true', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
 				name: 'Pall Hermansson',
 				category: 'Föt',
@@ -164,7 +159,6 @@ describe('SellerDlgComponent', () => {
 		}));
 		it('should return false', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.seller = {
 				name: '',
 				category: 'Föt',

@@ -6,6 +6,7 @@
 
 <button class='btn-primary' (click)='editSeller()'>Breyta seljanda</button>
 <button class='btn-primary' (click)='addProduct()'>Bæta við varningi</button>
+<button class='btn-primary' (click)='back()'>Tilbaka</button>
 <div *ngIf='noProducts'>Engar vörur eru til staðar fyrir þennan seljanda</div>
 <ngb-tabset>
 	<ngb-tab title='Allar vörur'>
@@ -35,5 +36,5 @@
 		</template>
 	</ngb-tab>
 </ngb-tabset>
-<button class='btn-primary' (click)='back()'>Tilbaka</button>
+
 <template ngbModalContainer></template>

@@ -1,4 +1,5 @@
 /* tslint:disable:no-unused-variable */
+// we got some help doing the from over here https://github.com/blacksonic/ngx-http-test
 
 import { TestBed, async, inject, fakeAsync } from '@angular/core/testing';
 
@@ -33,15 +34,9 @@ describe('SellersService', () => {
 
 	let subject: SellersService;
 	let backend: MockBackend;
-	let profileInfo = {
-		login: 'blacksonic',
-		id: 602571,
-		name: 'Gábor Soós'
-	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			//imports: [HttpModule],
 			providers: [
 				SellersService,
 				MockBackend,
@@ -52,10 +47,7 @@ describe('SellersService', () => {
 						return new Http(mockBackend, defaultOptions);
 					},
 					deps: [MockBackend, BaseRequestOptions]
-				}, /*{
-					provide: XHRBackend,
-					useClass: MockBackend
-				},*/
+				}, 
 			],
 		});
 	});
@@ -67,7 +59,7 @@ describe('SellersService', () => {
 	describe('getSellerProduct()', () => {
 		it('should get products', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -82,7 +74,7 @@ describe('SellersService', () => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers/1/products');
 				expect(connection.request.method).toEqual(RequestMethod.Get);
 
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -94,7 +86,7 @@ describe('SellersService', () => {
 	describe('getTop10ForSeller()', () => {
 		it('should get Top 10 Products which are equal to all products', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -110,7 +102,7 @@ describe('SellersService', () => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers/1/products');
 				expect(connection.request.method).toEqual(RequestMethod.Get);
 
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -122,7 +114,7 @@ describe('SellersService', () => {
 	describe('addProduct()', () => {
 		it('should return with same values as are sent in', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: product });
+				const options = new ResponseOptions({ body: product });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -140,7 +132,7 @@ describe('SellersService', () => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers/1/products');
 				expect(connection.request.method).toEqual(RequestMethod.Post);
 
-				let options = new ResponseOptions({ body: product });
+				const options = new ResponseOptions({ body: product });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -152,7 +144,7 @@ describe('SellersService', () => {
 	describe('editProduct()', () => {
 		it('should return with same values as are sent in', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: product });
+				const options = new ResponseOptions({ body: product });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -170,7 +162,7 @@ describe('SellersService', () => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers/1/products/' + product.id);
 				expect(connection.request.method).toEqual(RequestMethod.Put);
 
-				let options = new ResponseOptions({ body: product });
+				const options = new ResponseOptions({ body: product });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -183,7 +175,7 @@ describe('SellersService', () => {
 	describe('getSellers()', () => {
 		it('should get sellers', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: testSellers });
+				const options = new ResponseOptions({ body: testSellers });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -198,7 +190,7 @@ describe('SellersService', () => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers');
 				expect(connection.request.method).toEqual(RequestMethod.Get);
 
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -210,7 +202,7 @@ describe('SellersService', () => {
 	describe('getSellerById()', () => {
 		it('should get 1 seller by id', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: testableSeller });
+				const options = new ResponseOptions({ body: testableSeller });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -226,7 +218,7 @@ describe('SellersService', () => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers/1');
 				expect(connection.request.method).toEqual(RequestMethod.Get);
 
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -238,7 +230,7 @@ describe('SellersService', () => {
 	describe('editSeller()', () => {
 		it('should get seller that was sent in', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: testableSeller });
+				const options = new ResponseOptions({ body: testableSeller });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -253,7 +245,7 @@ describe('SellersService', () => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers/' + testableSeller.id);
 				expect(connection.request.method).toEqual(RequestMethod.Put);
 
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -265,7 +257,7 @@ describe('SellersService', () => {
 	describe('addNewSeller()', () => {
 		it('should get seller that was sent in', (done) => {
 			backend.connections.subscribe((connection: MockConnection) => {
-				let options = new ResponseOptions({ body: testableSeller });
+				const options = new ResponseOptions({ body: testableSeller });
 
 				connection.mockRespond(new Response(options));
 			});
@@ -279,7 +271,7 @@ describe('SellersService', () => {
 			backend.connections.subscribe((connection: MockConnection) => {
 				expect(connection.request.url).toEqual('http://localhost:5000/api/sellers/');
 				expect(connection.request.method).toEqual(RequestMethod.Post);
-				let options = new ResponseOptions({ body: testableProductData });
+				const options = new ResponseOptions({ body: testableProductData });
 
 				connection.mockRespond(new Response(options));
 			});

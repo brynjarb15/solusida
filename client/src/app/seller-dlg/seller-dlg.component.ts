@@ -21,6 +21,8 @@ export class SellerDlgComponent implements OnInit {
 		category: '',
 		imagePath: ''
 	};
+
+	// bootstrap class used in the html
 	parentClass = 'has-danger';
 	childClass = 'form-control-danger';
 
@@ -44,6 +46,7 @@ export class SellerDlgComponent implements OnInit {
 		}
 	}
 
+	// there must be a name but the rest is optional
 	validateInput(): boolean {
 		if (this.seller.name === '') {
 			this.isNameParentClass = this.parentClass;

@@ -8,7 +8,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { ProductDlgComponent } from './product-dlg.component';
 
-xdescribe('ProductDlgComponent', () => {
+describe('ProductDlgComponent', () => {
 	let component: ProductDlgComponent;
 	let fixture: ComponentFixture<ProductDlgComponent>;
 
@@ -32,15 +32,6 @@ xdescribe('ProductDlgComponent', () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ProductDlgComponent);
-		// const productDlg = fixture.debugElement.componentInstance; // þarf að breyta
-		/* productDlg.product = { // þarf að breyta
-			id: 0,
-			name: '',
-			price: 0,
-			quantityInStock: 0,
-			quantitySold: '',
-			imagePath: ''
-		}*/
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
@@ -119,7 +110,6 @@ xdescribe('ProductDlgComponent', () => {
 
 		it('should return false because of no name', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.product = {
 				id: 0,
 				name: '',
@@ -134,7 +124,6 @@ xdescribe('ProductDlgComponent', () => {
 		}));
 		it('should return false because of negative price', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.product = {
 				id: 0,
 				name: 'someName',
@@ -149,7 +138,6 @@ xdescribe('ProductDlgComponent', () => {
 		}));
 		it('should return false because of negative quantityInStock', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.product = {
 				id: 0,
 				name: 'someName',
@@ -164,7 +152,6 @@ xdescribe('ProductDlgComponent', () => {
 		}));
 		it('should return false because of negative quantitySold', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.product = {
 				id: 0,
 				name: 'someName',
@@ -179,7 +166,6 @@ xdescribe('ProductDlgComponent', () => {
 		}));
 		it('should return true', async(() => {
 			// arrange
-			// const sellerDlg = fixture.debugElement.componentInstance;
 			component.product = {
 				id: 0,
 				name: 'someName',
