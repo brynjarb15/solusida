@@ -82,7 +82,7 @@ export class SellersService {
 		return this.http.put(`http://localhost:5000/api/sellers/${sellerId}`, seller)
 			.map(response => {
 				return <Seller>response.json();
-			})
+			});
 	}
 
 	addNewSeller(seller: Seller): Observable<Seller> {

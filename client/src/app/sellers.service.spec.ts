@@ -47,7 +47,7 @@ describe('SellersService', () => {
 						return new Http(mockBackend, defaultOptions);
 					},
 					deps: [MockBackend, BaseRequestOptions]
-				}, 
+				},
 			],
 		});
 	});

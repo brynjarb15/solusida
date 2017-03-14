@@ -39,8 +39,8 @@ export class ListSellersComponent implements OnInit {
 			}
 			for (let j = 0; j < this.allIds.length; j++) {
 				this.service.getTop10ForSeller(this.allIds[j]).subscribe(top10 => {
-					this.mostPopularItems.push(top10.slice(0, 1)[0])
-					if (this.mostPopularItems[j] != undefined) {
+					this.mostPopularItems.push(top10.slice(0, 1)[0]);
+					if (this.mostPopularItems[j] !== undefined) {
 						if (this.mostPopularItems[j].quantitySold > this.quantity) {
 							this.quantity = this.mostPopularItems[j].quantitySold;
 							this.mostPopularProd = this.mostPopularItems[j];
