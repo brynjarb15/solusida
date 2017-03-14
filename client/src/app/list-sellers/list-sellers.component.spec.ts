@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { SellersService, Seller } from '../sellers.service';
+import { SellersService, Seller, SellerProduct } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -15,6 +15,7 @@ import { ListSellersComponent } from './list-sellers.component';
 class SellersServiceMock {
 	sellers: Seller[];
 	seller: Seller;
+	top10SellerProduct: SellerProduct[];
 
 	getSellers(): Observable<Seller[]> {
 		return Observable.of(this.sellers);
@@ -28,6 +29,10 @@ class SellersServiceMock {
 		this.sellers.push(theSeller);
 		return Observable.of(this.seller);
 	}
+
+	getTop10ForSeller(id: number): Observable<SellerProduct[]> {
+		return Observable.of(this.top10SellerProduct);
+	}
 }
 
 describe('ListSellersComponent', () => {
@@ -39,6 +44,17 @@ describe('ListSellersComponent', () => {
 	{ name: 'Palli2', category: 'Stolar', imagePath: 'http://test.com/testImageStolar.jpg', id: 2 },
 	{ name: 'Palli3', category: 'Bilar', imagePath: 'http://test.com/testImageBilar.jpg', id: 3 },
 	{ name: 'Palli4', category: 'Battery', imagePath: 'http://test.com/testImageBattery.jpg', id: 4 }];
+
+	const top10OfTestableProductData = [{ id: 8, name: 'Taska', price: 80000, quantitySold: 99, quantityInStock: 85, imagePath: 'pathAMynd' },
+		{ id: 7, name: 'Sokkar', price: 70000, quantitySold: 65, quantityInStock: 75, imagePath: 'pathAMynd' },
+		{ id: 9, name: 'Hulstur', price: 90000, quantitySold: 56, quantityInStock: 995, imagePath: 'pathAMynd' },
+		{ id: 6, name: 'Buxur', price: 60000, quantitySold: 45, quantityInStock: 55, imagePath: 'pathAMynd' },
+		{ id: 5, name: 'Hufa', price: 50000, quantitySold: 35, quantityInStock: 45, imagePath: 'pathAMynd' },
+		{ id: 4, name: 'Hanskar', price: 40000, quantitySold: 25, quantityInStock: 5, imagePath: 'pathAMynd' },
+		{ id: 10, name: 'Flaska', price: 110000, quantitySold: 23, quantityInStock: 75, imagePath: 'pathAMynd' },
+		{ id: 1, name: 'Skor', price: 999, quantitySold: 15, quantityInStock: 25, imagePath: 'pathAMynd' },
+		{ id: 11, name: 'Teppi', price: 110000, quantitySold: 11, quantityInStock: 65, imagePath: 'pathAMynd' },
+		{ id: 2, name: 'Buxur', price: 20000, quantitySold: 10, quantityInStock: 5, imagePath: 'pathAMynd' }];
 
 	const testableSeller = { id: 0, name: 'Palli', category: 'Fot', imagePath: 'http://test.com/testImageFot.jpg' };
 
@@ -123,6 +139,7 @@ describe('ListSellersComponent', () => {
 		{ name: 'Palli3', category: 'Bilar', imagePath: 'http://test.com/testImageBilar.jpg', id: 3 },
 		{ name: 'Palli4', category: 'Battery', imagePath: 'http://test.com/testImageBattery.jpg', id: 4 }];
 		mockService.sellers = sellers;
+		mockService.top10SellerProduct = top10OfTestableProductData;
 		// act
 		// make ngOnInit run
 		fixture.detectChanges();
