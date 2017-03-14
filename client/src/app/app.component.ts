@@ -11,7 +11,7 @@ import { ToastrService, ToastrConfig } from 'ngx-toastr';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-	title = 'app works!';
+	title = 'Sölusíða';
 
 	constructor(private toastrConfig: ToastrConfig) {
 		 toastrConfig.preventDuplicates = true;

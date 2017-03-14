@@ -12,19 +12,13 @@
 			Það þarf að slá inn nafn
 		</div>
 	</div>
-	<div [ngClass]='isCategoryParentClass'>
+	<div>
 		Flokkur:
-		<input [ngClass]='isCategoryClass' class='form-control' [(ngModel)]='seller.category' />
-		<div class='form-control-feedback' *ngIf='notCategory'>
-			Það þarf að slá inn flokk
-		</div>
+		<input class='form-control' [(ngModel)]='seller.category' />
 	</div>
-	<div [ngClass]='isImagePathParentClass'>
+	<div>
 		Slóð á Mynd:
-		<input [ngClass]='isImagePathClass' class='form-control' [(ngModel)]='seller.imagePath' />
-		<div class='form-control-feedback' *ngIf='notImagePath'>
-			Það þarf að slá inn slóð á mynd
-		</div>
+		<input class='form-control' [(ngModel)]='seller.imagePath' />
 	</div>
 </div>
 <div class='modal-footer'>

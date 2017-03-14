@@ -26,14 +26,8 @@ export class SellerDlgComponent implements OnInit {
 
 	isNameClass = '';
 	isNameParentClass = '';
-	isCategoryClass = '';
-	isCategoryParentClass = '';
-	isImagePathClass = '';
-	isImagePathParentClass = '';
 
 	notName = false;
-	notCategory = false;
-	notImagePath = false;
 
 	constructor(public activeModal: NgbActiveModal) { }
 
@@ -60,24 +54,6 @@ export class SellerDlgComponent implements OnInit {
 			this.isNameClass = '';
 			this.notName = false;
 		}
-		if (this.seller.category === '') {
-			this.isCategoryParentClass = this.parentClass;
-			this.isCategoryClass = this.childClass;
-			this.notCategory = true;
-		} else {
-			this.isCategoryParentClass = '';
-			this.isCategoryClass = '';
-			this.notCategory = false;
-		}
-		if (this.seller.imagePath === '') {
-			this.isImagePathParentClass = this.parentClass;
-			this.isImagePathClass = this.childClass;
-			this.notImagePath = true;
-		} else {
-			this.isImagePathParentClass = '';
-			this.isImagePathClass = '';
-			this.notImagePath = false;
-		}
-		return !(this.notImagePath || this.notCategory || this.notName);
+		return !(this.notName);
 	}
 }
